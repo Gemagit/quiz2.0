@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    font-family: "Bangers", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+body {
+    max-width: 900%;
+    margin: 40px 10px;
+    padding: 5px;
+    background-image: url("./assets/fondocomic.jpg");
+    /* Ruta de la imagen */
+    background-size: cover;
+    /* Cubrir completamente el contenedor */
+    background-position: center;
+    /* Centrar la imagen */
+    border-radius: 0.1em;
+    font-size: 16px;
+}
+
+.personajes {
+    width: 50%;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.pregunta {
+    padding: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 90em;
+    object-fit: cover;
+}
+
+
+.tituloPreguntas {
+    color: black;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    height: 120px;
+    background-color: white;
+    border-radius: 2em;
+    border: 4px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.contenedor-respuestas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.respuesta {
+    border-radius: 2em;
+    border: 4px solid black;
+    width: 100%;
+    height: 90px;
+    margin: 3px;
+}
+
+
+label {
+    color: solid black;
+    background: rgba(241, 243, 244, 0.5);
+    /*Te deja ese contenedor con un efecto translúcido*/
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 2em;
+}
+
+label:hover {
+    background-color: white;
+    opacity: 1.5;
+    zoom: 1.5;
+}
+
+
+
+h1 {
+    color: black;
+    font-size: 30px;
+}
+
+@media only screen and (min-width: 700px) {
+    .contenedor-respuestas {
+        width: 75%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pregunta {
+        padding: 20px;
+        margin-top: 30px;
+        text-align: center;
+        width: 100%;
+    }
+
+
+    .respuesta {
+        width: 34%;
+        margin-top: 20px;
+    }
+
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+
+    .tituloPreguntas {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    .pregunta {
+        padding: 20px;
+        margin-top: 30px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .contenedor-respuestas {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+
+
+    h1 {
+        font-size: 50px;
+    }
+
+
+    h3 {
+        font-size: 20px;
+    }
+
+
+    .tituloPreguntas {
+        width: 55%;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        background-color: white;
+        color: black;
+
+    }
+
+
+    .respuesta {
+        border: 0.05 em white;
+        margin: 4px;
+    }
+
+
+    h4 {
+        font-size: 20px;
+    }
+}

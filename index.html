@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz 2.0</title>
+    <link rel="icon" href="./assets/otaku.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <header>
+       <div class="personajes"></div>
+    </header>
+
+
+    <main>
+        <form>
+            <section class="pregunta">
+                <legend class="tituloPreguntas">¿De quién es el tema: "No me llames gigoló, no me llames casanova?"
+                </legend>
+                <div class="contenedor-respuestas">
+                    <div class="respuesta">
+                        <label for="respuesta1_1">Whitesnake</label>
+                        <input hidden id="respuesta1_1" type="radio" name="pregunta1" value="Whitesnake" required>
+                    </div>
+
+                    <div class="respuesta">
+                        <label for="respuesta2_1">Maluma baby</label>
+                        <input hidden id="respuesta2_1" type="radio" name="pregunta1" value="Maluma baby" required>
+                    </div>
+
+                    <div class="respuesta">
+                        <label for="respuesta3_1">La Pantoja de Puerto Rico</label>
+                        <input hidden id="respuesta3_1" type="radio" name="pregunta1" value="La Pantoja de Puerto Rico"
+                            required>
+                    </div>
+
+                    <div class="respuesta">
+                        <label for="respuesta4_1">Def Leppard</label>
+                        <input hidden id="respuesta4_1" type="radio" name="pregunta1" value="Def Lepard" required>
+                    </div>
+                </div>
+
+            </section>
+        </form>
+    </main>
+
+    <footer>
+
+    </footer>
+
     <script src="./script.js"></script>
 </body>
+
 </html>
