@@ -1,3 +1,30 @@
+//Aquí recojo todos los inputs y los meto en una variable
+const arrayInputs = document.querySelectorAll("input");
+//el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
+// recorro todos los input 
+arrayInputs.forEach(function (input) {
+    //le digo que este pendiente cada vez que el usuario haga input
+    input.addEventListener("input", function (event) {
+        //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
+        //si checked es false
+        arrayInputs.forEach(
+            function (input) {
+                //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
+                if (input.checked) {
+                    input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
+                } else {
+                    input.parentElement.style.backgroundColor = "white";
+                }
+                //y ahora pintamelos claritos si no esta chequeado
+            })
+    });
+});
+
+
+
+
+
+
 //he accedido al formulario y le he creado el evento preventDefault para que cuando el usuario pulse submit tenga en cuenta una serie de condiciones antes de comprobar los aciertos
 document.querySelector("form").addEventListener("submit", function (event) {
     event.preventDefault();

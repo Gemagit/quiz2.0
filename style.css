@@ -10,13 +10,25 @@
 body {
     max-width: 100%;
     margin: 40px 10px;
-    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 100px;
     background-image: url("./assets/fondocomic.jpg");
     /* Ruta de la imagen */
-    background-size: cover;
+    background-size: contain;
     /* Cubrir completamente el contenedor */
     background-position: center;
 }
+
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
+
+
 
 .personajes {
     background-image: url("./assets/personajes/naruto.png");
@@ -44,7 +56,6 @@ form {
 
 
 .pregunta {
-    margin-bottom: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -60,7 +71,7 @@ form {
     font-size: 20px;
     margin-bottom: 40px;
     width: 100%;
-    height: 120px;
+    height: 140px;
     background-color: white;
     border-radius: 2em;
     border: 6px solid black;
@@ -74,7 +85,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 100%;
 }
 
 .respuesta {
@@ -105,10 +116,12 @@ label:hover {
     zoom: 1.5;
 }
 
+
+
 button {
     background-color: black;
     border-radius: 2em;
-    border:  6px solid white;
+    border: 6px solid white;
     color: white;
     margin-top: 30px;
     width: 50%;
@@ -123,6 +136,9 @@ h1 {
 }
 
 @media only screen and (min-width: 700px) {
+
+
+
     .contenedor-respuestas {
         width: 75%;
         display: flex;
@@ -132,16 +148,13 @@ h1 {
     }
 
     .pregunta {
-        padding: 20px;
-        margin-top: 30px;
         text-align: center;
-        width: 100%;
+        width: 80%;
     }
 
 
     .respuesta {
         width: 34%;
-        margin-top: 20px;
     }
 
 
@@ -155,7 +168,8 @@ h1 {
 
 
     .tituloPreguntas {
-        width: 50%;
+        width: 52%;
+        margin-bottom: 10px;
     }
 }
 
@@ -163,7 +177,6 @@ h1 {
 
     .pregunta {
         padding: 20px;
-        margin-top: 30px;
         text-align: center;
         width: 100%;
     }
@@ -194,7 +207,6 @@ h1 {
         margin-bottom: 10px;
         background-color: white;
         color: black;
-
     }
 
 
