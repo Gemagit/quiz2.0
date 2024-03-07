@@ -8,7 +8,7 @@
 
 
 body {
-    max-width: 900%;
+    max-width: 100%;
     margin: 40px 10px;
     padding: 5px;
     background-image: url("./assets/fondocomic.jpg");
@@ -16,18 +16,25 @@ body {
     background-size: cover;
     /* Cubrir completamente el contenedor */
     background-position: center;
-    /* Centrar la imagen */
-    border-radius: 0.1em;
-    font-size: 16px;
 }
 
 .personajes {
-    width: 50%;
-    height: 160px;
+
+    background-image: url("./assets/personajes/naruto.png");
+    width: 200px;
+    /* Ancho del elemento */
+    height: 220px;
+    /* Ruta de la imagen */
+    background-size: contain;
+    /* Cubrir completamente el contenedor */
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px;
+    margin: 0px 100px 0px 100px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
+    justify-content: baseline;
+    align-items: baseline;
+    /* Centra el contenido horizontalmente */
 }
 
 
@@ -41,8 +48,7 @@ form {
 
 
 .pregunta {
-    padding: 20px;
-    margin-top: 30px;
+
     margin-bottom: 20px;
     text-align: center;
     display: flex;
@@ -57,13 +63,12 @@ form {
 .tituloPreguntas {
     color: black;
     font-size: 20px;
-    margin-top: 20px;
     margin-bottom: 40px;
     width: 100%;
     height: 120px;
     background-color: white;
     border-radius: 2em;
-    border: 4px solid black;
+    border: 6px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +84,7 @@ form {
 
 .respuesta {
     border-radius: 2em;
-    border: 4px solid black;
+    border: 6px solid black;
     width: 100%;
     height: 90px;
     margin: 3px;
