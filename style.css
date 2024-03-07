@@ -19,7 +19,6 @@ body {
 }
 
 .personajes {
-
     background-image: url("./assets/personajes/naruto.png");
     width: 200px;
     /* Ancho del elemento */
@@ -29,11 +28,8 @@ body {
     /* Cubrir completamente el contenedor */
     background-position: center;
     background-repeat: no-repeat;
-    padding: 80px;
-    margin: 0px 100px 0px 100px;
+    margin: 0px 150px 0px 150px;
     display: flex;
-    justify-content: baseline;
-    align-items: baseline;
     /* Centra el contenido horizontalmente */
 }
 
@@ -48,7 +44,6 @@ form {
 
 
 .pregunta {
-
     margin-bottom: 20px;
     text-align: center;
     display: flex;
@@ -108,6 +103,16 @@ label:hover {
     background-color: white;
     opacity: 1.5;
     zoom: 1.5;
+}
+
+button {
+    background-color: black;
+    border-radius: 2em;
+    border:  6px solid white;
+    color: white;
+    margin-top: 30px;
+    width: 50%;
+    height: 3em;
 }
 
 
