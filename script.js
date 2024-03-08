@@ -46,28 +46,56 @@ document.querySelector("form").addEventListener("submit", function (event) {
     if (respuesta4 === respuestasCorrectas.pregunta4) aciertos++;
     if (respuesta5 === respuestasCorrectas.pregunta5) aciertos++;
 
-    
 
-        if (aciertos <= 3) {
-            let emoTriste = "\u{1F61E}";
-            alert(`Número de aciertos: ${aciertos}. \n${emoTriste}Por favor, lea la documentación rockera.${emoTriste}`);
 
-        } else { //4 aciertos o más
-            let emoRock = "\u{1F918}";
-            alert(`Número de aciertos: ${aciertos}. \n${emoRock}¡Enhorabuena, estás hecho un auténtico rockero!${emoRock}`);
-            event.target.submit();
-        }
+    if (aciertos <= 3) {
+        let emoTriste = "\u{1F61E}";
+        alert(`Número de aciertos: ${aciertos}. \n${emoTriste}Por favor, lea la documentación rockera.${emoTriste}`);
+
+    } else { //4 aciertos o más
+        let emoRock = "\u{1F918}";
+        alert(`Número de aciertos: ${aciertos}. \n${emoRock}¡Enhorabuena, estás hecho un auténtico rockero!${emoRock}`);
+        event.target.submit();
+    }
 });
 
 
-/* async function printQuestions() {
+
+async function printQuestions() {
     let response = await fetch("https://opentdb.com/api.php?amount=1&category=31&difficulty=easy&type=multiple");
     let data = await response.json();
+    /* let data = {
+        "response_code": 0,
+        "results": [
+            {
+                "type": "multiple",
+                "difficulty": "easy",
+                "category": "Entertainment: Japanese Anime &amp; Manga",
+                "question": "In &quot;To Love-Ru&quot;, Ren and Run are from what planet?",
+                "correct_answer": "Memorze",
+                "incorrect_answers": [
+                    "Deviluke",
+                    "Mistletoe",
+                    "Okiwana"
+                ]
+            }
+        ]
+    }; */
 
     let question = data.results[0].question;
-    let correctAnswer = data.results[0].correct_answer;
-    let wrongAnswers = data.results[0].incorrect_answers; // --> Array con tres elementos
-    console.log(question);
-    console.log(correctAnswer);
-    console.log(wrongAnswers[0])
-} */
+    let correctAnswer = data.results[0].correct_answer; // --> La respuesta correcta sigue estando aquí
+    let allAnswers = data.results[0].incorrect_answers; // --> Array con tres elementos
+    let correctArr = correctAnswer.split();
+    allAnswers.push(correctArr[0]); //Array de 4 elementos con las respuestas
+
+    let randomAnswers = allAnswers.sort(function() {return Math.random() - 0.5}); //Randomiza los elementos dentro del array
+
+    document.getElementById("question").innerHTML = question;
+    document.getElementById("answer0Label").innerHTML = allAnswers.shift(); //Le quitamos el primer valor al array con las respuestas y lo mostramos
+    document.getElementById("answer1Label").innerHTML = allAnswers.shift(); //Al hacerlo sucesivamente impedimos que se repita ninguno de los elementos
+    document.getElementById("answer2Label").innerHTML = allAnswers.shift();
+    document.getElementById("answer3Label").innerHTML = allAnswers.shift(); //Al final el array allAnswers queda vacío
+
+}
+
+printQuestions()
