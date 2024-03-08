@@ -1,4 +1,4 @@
-//Aquí recojo todos los inputs y los meto en una variable
+/* //Aquí recojo todos los inputs y los meto en una variable
 const arrayInputs = document.querySelectorAll("input");
 //el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
 // recorro todos los input 
@@ -18,14 +18,14 @@ arrayInputs.forEach(function (input) {
                 //y ahora pintamelos claritos si no esta chequeado
             })
     });
-});
+}); */
 
 
 
 
 
 
-//he accedido al formulario y le he creado el evento preventDefault para que cuando el usuario pulse submit tenga en cuenta una serie de condiciones antes de comprobar los aciertos
+/* //he accedido al formulario y le he creado el evento preventDefault para que cuando el usuario pulse submit tenga en cuenta una serie de condiciones antes de comprobar los aciertos
 document.querySelector("form").addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -57,14 +57,13 @@ document.querySelector("form").addEventListener("submit", function (event) {
         alert(`Número de aciertos: ${aciertos}. \n${emoRock}¡Enhorabuena, estás hecho un auténtico rockero!${emoRock}`);
         event.target.submit();
     }
-});
-
+}); */
 
 
 async function printQuestions() {
-    let response = await fetch("https://opentdb.com/api.php?amount=1&category=31&difficulty=easy&type=multiple");
-    let data = await response.json();
-    /* let data = {
+    /* let response = await fetch("https://opentdb.com/api.php?amount=1&category=31&difficulty=easy&type=multiple");
+    let data = await response.json(); */
+    let data = {
         "response_code": 0,
         "results": [
             {
@@ -80,7 +79,7 @@ async function printQuestions() {
                 ]
             }
         ]
-    }; */
+    };
 
     let question = data.results[0].question;
     let correctAnswer = data.results[0].correct_answer; // --> La respuesta correcta sigue estando aquí
@@ -90,12 +89,22 @@ async function printQuestions() {
 
     let randomAnswers = allAnswers.sort(function() {return Math.random() - 0.5}); //Randomiza los elementos dentro del array
 
+    document.getElementById("answer0").setAttribute("value", allAnswers.shift()); //Al hacerlo sucesivamente impedimos que se repita ninguno de los elementos
+    document.getElementById("answer0Label").innerHTML = document.getElementById("answer0").value //Le dimos como valor al input el elemento extraido del array para después poder comprobar si coincide con correctAnswer o no
+    document.getElementById("answer1").setAttribute("value", allAnswers.shift());
+    document.getElementById("answer1Label").innerHTML = document.getElementById("answer1").value
+    document.getElementById("answer2").setAttribute("value", allAnswers.shift());
+    document.getElementById("answer2Label").innerHTML = document.getElementById("answer2").value
+    document.getElementById("answer3").setAttribute("value", allAnswers.shift()); //Al final el array allAnswers queda vacío
+    document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value
+    
     document.getElementById("question").innerHTML = question;
-    document.getElementById("answer0Label").innerHTML = allAnswers.shift(); //Le quitamos el primer valor al array con las respuestas y lo mostramos
-    document.getElementById("answer1Label").innerHTML = allAnswers.shift(); //Al hacerlo sucesivamente impedimos que se repita ninguno de los elementos
-    document.getElementById("answer2Label").innerHTML = allAnswers.shift();
-    document.getElementById("answer3Label").innerHTML = allAnswers.shift(); //Al final el array allAnswers queda vacío
-
-}
+};
 
 printQuestions()
+
+document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    console.log(event.target.pregunta.value)
+});
