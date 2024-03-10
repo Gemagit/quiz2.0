@@ -60,6 +60,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 });
 
 
+
 /*GRÁFICA PIE PORCENTAJE
 
 var data = {
@@ -75,4 +76,17 @@ new Chartist.Pie('.ct-chart', data, {
 });
 ;*/
 
+
+
+/* async function printQuestions() {
+    let response = await fetch("https://opentdb.com/api.php?amount=1&category=31&difficulty=easy&type=multiple");
+    let data = await response.json();
+
+    let question = data.results[0].question;
+    let correctAnswer = data.results[0].correct_answer;
+    let wrongAnswers = data.results[0].incorrect_answers; // --> Array con tres elementos
+    console.log(question);
+    console.log(correctAnswer);
+    console.log(wrongAnswers[0])
+} */
 
