@@ -59,8 +59,12 @@ document.querySelector("form").addEventListener("submit", function (event) {
     }
 }); */
 
+let dataAnswers = JSON.stringify([]);
 
-async function printQuestions() {
+localStorage.setItem("getDataUsers", dataAnswers);
+
+document.querySelector("button").addEventListener("click", function (event) {
+    event.preventDefault();
     /* let response = await fetch("https://opentdb.com/api.php?amount=1&category=31&difficulty=easy&type=multiple");
     let data = await response.json(); */
     let data = {
@@ -87,24 +91,22 @@ async function printQuestions() {
     let correctArr = correctAnswer.split();
     allAnswers.push(correctArr[0]); //Array de 4 elementos con las respuestas
 
-    let randomAnswers = allAnswers.sort(function() {return Math.random() - 0.5}); //Randomiza los elementos dentro del array
+    allAnswers.sort(function() {return Math.random() - 0.5}); //Randomiza los elementos dentro del array
 
     document.getElementById("answer0").setAttribute("value", allAnswers.shift()); //Al hacerlo sucesivamente impedimos que se repita ninguno de los elementos
-    document.getElementById("answer0Label").innerHTML = document.getElementById("answer0").value //Le dimos como valor al input el elemento extraido del array para después poder comprobar si coincide con correctAnswer o no
+    document.getElementById("answer0Label").innerHTML = document.getElementById("answer0").value; //Le dimos como valor al input el elemento extraido del array para después poder comprobar si coincide con correctAnswer o no
     document.getElementById("answer1").setAttribute("value", allAnswers.shift());
-    document.getElementById("answer1Label").innerHTML = document.getElementById("answer1").value
+    document.getElementById("answer1Label").innerHTML = document.getElementById("answer1").value;
     document.getElementById("answer2").setAttribute("value", allAnswers.shift());
-    document.getElementById("answer2Label").innerHTML = document.getElementById("answer2").value
+    document.getElementById("answer2Label").innerHTML = document.getElementById("answer2").value;
     document.getElementById("answer3").setAttribute("value", allAnswers.shift()); //Al final el array allAnswers queda vacío
-    document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value
+    document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value;
     
     document.getElementById("question").innerHTML = question;
-};
 
-printQuestions()
-
-document.querySelector("form").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    console.log(event.target.pregunta.value)
+    let answerMarked = event.target.pregunta.value;
+    console.log(answerMarked);
+    if(answerMarked == correctAnswer) {
+        
+    } else console.log("Has fallado...")
 });
