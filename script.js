@@ -110,3 +110,33 @@ document.querySelector("button").addEventListener("click", function (event) {
         
     } else console.log("Has fallado...")
 });
+
+/*GRÁFICA PIE PORCENTAJE
+
+var data = {
+  series: [5, 3, 4]
+};
+
+var sum = function(a, b) { return a + b };
+
+new Chartist.Pie('.ct-chart', data, {
+  labelInterpolationFnc: function(value) {
+    return Math.round(value / data.series.reduce(sum) * 100) + '%';
+  }
+});
+;*/
+
+
+
+/* async function printQuestions() {
+    let response = await fetch("https://opentdb.com/api.php?amount=1&category=31&difficulty=easy&type=multiple");
+    let data = await response.json();
+
+    let question = data.results[0].question;
+    let correctAnswer = data.results[0].correct_answer;
+    let wrongAnswers = data.results[0].incorrect_answers; // --> Array con tres elementos
+    console.log(question);
+    console.log(correctAnswer);
+    console.log(wrongAnswers[0])
+} */
+
