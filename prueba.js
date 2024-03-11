@@ -127,7 +127,7 @@ let data = {
 fetch("https://opentdb.com/api.php?amount=10&category=31&type=multiple")
     .then(res => res.json())
     .then(data => {
-        for (let i = 0; i < data.results.length; i++) {
+        
             function printQuestions() {
                 let questionForm = `<section id="question_container">
                             <legend id="question"></legend>
@@ -178,9 +178,4 @@ fetch("https://opentdb.com/api.php?amount=10&category=31&type=multiple")
                 document.getElementById("question").innerHTML = question;
             }
         }
-        printQuestions()
-        return document.querySelector("button").addEventListener("click", function (event) {
-            event.preventDefault();
-            printQuestions();
-        })
-    })
+    )
