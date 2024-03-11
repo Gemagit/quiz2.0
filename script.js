@@ -129,4 +129,5 @@ new Chartist.Pie('.ct-chart', data, {
     return Math.round(value / data.series.reduce(sum) * 100) + '%';
   }
 });
-;*/
+*/
+
