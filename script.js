@@ -61,18 +61,6 @@ async function printQuestions(preg) {
 
     document.querySelector("button").addEventListener("click", function (event) {
         event.preventDefault();
-        let counterRespondidas = 0;
-        let arrayInputs = document.querySelectorAll("input")
-        arrayInputs.forEach(function (input) {
-            if (input.checked) {
-                counterRespondidas++
-            }
-        })
-        console.log("Numero respuestas respondidas: " + counterRespondidas)
-        if (counterRespondidas != 1) {
-            alert('Debes seleccionar alguna respuesta')
-            return
-        }
         console.log("counter", counter);
         counter++
         console.log(counter)
