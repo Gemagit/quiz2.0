@@ -35,7 +35,7 @@ header {
 
 
 .personajes {
-    background-image: url("./assets/personajes/goku.png");
+    background-image: url("./assets/personajes/gojosatoru.png");
     width: 100px;
     /* Ancho del elemento */
     /* Ruta de la imagen */
@@ -110,13 +110,14 @@ label {
     align-items: center;
     width: 100%;
     height: 100%;
-    border-radius: 2em;
+    border-radius: 1.3em;
 }
+
 
 label:hover {
     background-color: white;
-    opacity: 1.5;
-    zoom: 1.5;
+    opacity: 1.2;
+    zoom: 1;
 }
 
 
