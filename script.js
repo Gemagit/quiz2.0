@@ -325,12 +325,19 @@ arrayInputs.forEach(function (input) {
             return
         }
         counter++
-        printQuestions(counter)
+        console.log("Contador de preguntas: " + counter)
+        if(counter <= 9) {
+            printQuestions(counter)
+        } else {
+            printResults()
+        }
     })
 }
 printQuestions(0);
 
-
+function printResults() {
+    document.body.innerHTML = "<h1>Se dibuja la nueva tarjeta con los resultados</h1>"
+}
 
 
 //HACER CONTADOR PARA PREVIAMENTE IMPRIMIR UN <p> (appendchild) y añadirle resultado con mensaje
