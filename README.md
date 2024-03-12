@@ -8,7 +8,7 @@ Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que
 4. Collaboration
 5. Diseño
 
-## 1.0 Mobile First
+## 1. Mobile First
 
 Es importante destacar la importancia que tiene hoy en día "mobile-first", la idea con ello es proveer al usuario una buena experiencia para todos los tamaños de pantalla—empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor.En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
 
