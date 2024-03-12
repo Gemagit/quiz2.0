@@ -6,12 +6,12 @@ Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que
 1. Mobile First
 2. Tecnologies
 3. Features
-4. Collaboration
-5. Diseño
+4. Design
+5. Colaboration
 
 ## 1. Mobile First
 
-Es importante destacar la importancia que tiene hoy en día "mobile-first", la idea con ello es proveer al usuario una buena experiencia para todos los tamaños de pantalla—empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor.En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
+Es importante destacar la importancia que tiene hoy en día "mobile-first", la idea con ello es proveer al usuario una buena experiencia para todos los tamaños de pantalla, empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor.En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
 
 ### MOBILE
 ![mobile](https://github.com/Gemagit/quiz2.0/assets/143506667/3e888ea9-e00d-406c-9b38-bc390955b284)
