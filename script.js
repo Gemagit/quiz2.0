@@ -366,8 +366,8 @@ function printQuestions(preg) {
             }
         })
         if (counterRespondidas != 1) {
-            alert('Debes seleccionar alguna respuesta')
-            return
+            /* alert('Debes seleccionar alguna respuesta')
+            return */
         }
         counter++
         console.log("Contador de preguntas: " + counter)
@@ -382,57 +382,32 @@ printQuestions(0);
 
 function printResults() {
     document.getElementById("sect1").innerHTML = "";
-    let msj = "";
+
+  
+
+    let pre = document.createElement("pre");
+    let p= document.createElement("p");
+    
 
     if (correctAnswersCounter <= 5) {
-        msj += `Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún tiene mucho que ofrecerte coleguita\n`;
-
-    } else { //4 aciertos o más
-        msj += `Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
+        pre.setAttribute("id","preRed");
+    } else { //5 aciertos o más
+        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+        pre.setAttribute("id","preGreen");
     };
 
-    let p = document.createElement("pre");
-    let mensaje = document.createTextNode(msj);
-    p.style.color = "#DD1C1A";
-    p.style.fontSize = "16px";
-    p.appendChild(mensaje);
 
-    document.getElementById("sect1").appendChild(p); // dibuja resultado
+    pre.appendChild(p);
+    document.getElementById("sect1").appendChild(pre); // dibuja resultado
 }
 
 
-//HACER CONTADOR PARA PREVIAMENTE IMPRIMIR UN <p> (appendchild) y añadirle resultado con mensaje
-
-//he accedido al formulario y le he creado el evento preventDefault para que cuando el usuario pulse submit tenga en cuenta una serie de condiciones antes de comprobar los aciertos
-/* document.querySelector("button").addEventListener("click", function (event) {
-    event.preventDefault();
-
-    let msj = "";
-
-    if (aciertos <= 5) {
-        msj += `Número de aciertos: ${aciertos}. \n Por favor, lea la documentación rockera.n`;
-
-    } else { //4 aciertos o más
-        msj += `Número de aciertos: ${aciertos}. \n ¡Enhorabuena, estás hecho un auténtico rockero!\n`;
-        event.target.submit();
-    }
-
-    let p = document.createElement("pre");
-    let mensaje = document.createTextNode(msj);
-    p.style.color = "#DD1C1A";
-    p.style.fontSize = "16px";
-    p.appendChild(mensaje);
-
-    document.getElementsBycl("form").appendChild(p); // dibuja resultado
-
-}); */
 
 
+/*/GRÁFICA PIE PORCENTAJE
 
-
-/*GRÁFICA PIE PORCENTAJE
-
-var data = {
+var data1 = {
   series: [5, 3, 4]
 };
 

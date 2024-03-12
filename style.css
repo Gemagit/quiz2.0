@@ -16,7 +16,7 @@ body {
     background-image: url("./assets/fondocomic.jpg");
     /* Ruta de la imagen */
     background-size: cover;
-    background-repeat:repeat;
+    background-repeat: repeat;
     /* Cubrir completamente el contenedor */
     background-position: center;
 }
@@ -45,7 +45,7 @@ header {
     background-repeat: no-repeat;
     display: flex;
     justify-content: end;
-    margin-left:30px;
+    margin-left: 30px;
     /* Centra el contenido horizontalmente */
 }
 
@@ -55,6 +55,40 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+#preRed {
+    background-color: #C1493E;
+    color: black;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 130px;
+    width: 90%;
+    height: 120px;
+    word-wrap: break-word;
+    text-align: center;
+    border-radius: 2em;
+    border: 6px solid black;
+}
+
+
+
+
+#preGreen {
+    background-color:#A7C957;
+    color: black;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 130px;
+    width: 90%;
+    height: 120px;
+    word-wrap: break-word;
+    text-align: center;
+    border-radius: 2em;
+    border: 6px solid black;
 }
 
 
@@ -169,7 +203,7 @@ h1 {
         background-repeat: no-repeat;
         display: flex;
         justify-content: end;
-        margin-left:250px;
+        margin-left: 250px;
         /* Centra el contenido horizontalmente */
     }
 
@@ -197,7 +231,7 @@ h1 {
         margin-top: 20px;
     }
 
-   
+
 
     button {
         background-color: black;
@@ -235,7 +269,7 @@ h1 {
         background-image: url("./assets/fondocomic.jpg");
         /* Ruta de la imagen */
         background-size: cover;
-        background-repeat:repeat;
+        background-repeat: repeat;
         /* Cubrir completamente el contenedor */
         background-position: center;
     }
@@ -279,7 +313,7 @@ h1 {
         background-repeat: no-repeat;
         display: flex;
         justify-content: end;
-        margin-left:600px;
+        margin-left: 600px;
         /* Centra el contenido horizontalmente */
     }
 
@@ -316,7 +350,7 @@ h1 {
 
 
     h1 {
-        margin-top:40px;
+        margin-top: 40px;
         font-size: 90px;
         letter-spacing: 4px;
     }
@@ -327,14 +361,3 @@ h1 {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
