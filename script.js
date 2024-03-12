@@ -1,5 +1,5 @@
 /* let counter = 0;
-console.log(counter)
+let correctAnswersCounter = 0;
 
 async function printQuestions(preg) {
     let questionForm = `<section id="question_container">
@@ -35,16 +35,10 @@ async function printQuestions(preg) {
     document.querySelector(".sect1").innerHTML = questionForm; //Pintamos la estructura del <form> en el DOM
 
     let question = data.results[preg].question;
-    console.log("Pregunta: " + question)
     let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
-    console.log("Respuesta correcta: " + correctAnswer);
     let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
-    console.log("Resto de respuestas: " + allAnswers)
     allAnswers.push(correctAnswer);
-    console.log(allAnswers)
-
     let correctArr = correctAnswer.split();
-    console.log(correctArr)
     allAnswers.push(correctArr[preg]); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
@@ -60,8 +54,53 @@ async function printQuestions(preg) {
 
     document.getElementById("question").innerHTML = question;
 
+    //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
+    //Aquí recojo todos los inputs y los meto en una variable
+    const arrayInputs = document.querySelectorAll("input");
+    //el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
+    // recorro todos los input 
+    arrayInputs.forEach(function (input) {
+        //le digo que este pendiente cada vez que el usuario haga input
+        input.addEventListener("input", function (event) {
+            //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
+            //si checked es false
+            arrayInputs.forEach(
+                function (input) {
+                    //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
+                    if (input.checked) {
+                        input.parentElement.style.backgroundColor = "#212529";
+                    } else {
+                        input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
+                    }
+                    //y ahora pintamelos claritos si no esta chequeado
+                })
+        });
+    });
+
+
     document.querySelector("button").addEventListener("click", function (event) {
         event.preventDefault();
+        //Lógica de validación de preguntas y contador de aciertos
+        if (document.getElementById("answer0").checked) {
+            const markedAnswer = document.getElementById("answer0").value
+            console.log(markedAnswer)
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
+        } else if (document.getElementById("answer1").checked) {
+            const markedAnswer = document.getElementById("answer1").value
+            console.log(markedAnswer)
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
+        } else if (document.getElementById("answer2").checked) {
+            const markedAnswer = document.getElementById("answer2").value
+            console.log(markedAnswer)
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
+        } else {
+            const markedAnswer = document.getElementById("answer3").value
+            console.log(markedAnswer)
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
+        }
+        console.log(correctAnswersCounter)
+
+        //Lógica de respuesta requerida
         let counterRespondidas = 0;
         let arrayInputs = document.querySelectorAll("input")
         arrayInputs.forEach(function (input) {
@@ -69,18 +108,24 @@ async function printQuestions(preg) {
                 counterRespondidas++
             }
         })
-        console.log("Numero respuestas respondidas: " + counterRespondidas)
         if (counterRespondidas != 1) {
             alert('Debes seleccionar alguna respuesta')
             return
         }
-        console.log("counter", counter);
         counter++
-        console.log(counter)
-        printQuestions(counter)
+        console.log("Contador de preguntas: " + counter)
+        if (counter <= 9) {
+            printQuestions(counter)
+        } else {
+            printResults()
+        }
     })
 }
-printQuestions(0); */
+printQuestions(0); 
+
+function printResults() {
+    document.body.innerHTML = "<h1>Se dibuja la nueva tarjeta con los resultados</h1>"
+}*/
 
 let data = {
     "response_code": 0,
@@ -265,53 +310,53 @@ function printQuestions(preg) {
 
     document.getElementById("question").innerHTML = question;
 
-  
+
     //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
-//Aquí recojo todos los inputs y los meto en una variable
-const arrayInputs = document.querySelectorAll("input");
-//el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
-// recorro todos los input 
-arrayInputs.forEach(function (input) {
-    //le digo que este pendiente cada vez que el usuario haga input
-    input.addEventListener("input", function (event) {
-        //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
-        //si checked es false
-        arrayInputs.forEach(
-            function (input) {
-                //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
-                if (input.checked) {
-                    input.parentElement.style.backgroundColor = "#212529";
-                } else {
-                    input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
-                }
-                //y ahora pintamelos claritos si no esta chequeado
-            })
+    //Aquí recojo todos los inputs y los meto en una variable
+    const arrayInputs = document.querySelectorAll("input");
+    //el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
+    // recorro todos los input 
+    arrayInputs.forEach(function (input) {
+        //le digo que este pendiente cada vez que el usuario haga input
+        input.addEventListener("input", function (event) {
+            //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
+            //si checked es false
+            arrayInputs.forEach(
+                function (input) {
+                    //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
+                    if (input.checked) {
+                        input.parentElement.style.backgroundColor = "#212529";
+                    } else {
+                        input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
+                    }
+                    //y ahora pintamelos claritos si no esta chequeado
+                })
+        });
     });
-});
 
 
     document.querySelector("button").addEventListener("click", function (event) {
         event.preventDefault();
         //Lógica de validación de preguntas y contador de aciertos
-        if(document.getElementById("answer0").checked) {
+        if (document.getElementById("answer0").checked) {
             const markedAnswer = document.getElementById("answer0").value
             console.log(markedAnswer)
-            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
-        } else if(document.getElementById("answer1").checked) {
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
+        } else if (document.getElementById("answer1").checked) {
             const markedAnswer = document.getElementById("answer1").value
             console.log(markedAnswer)
-            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
-        } else if(document.getElementById("answer2").checked) {
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
+        } else if (document.getElementById("answer2").checked) {
             const markedAnswer = document.getElementById("answer2").value
             console.log(markedAnswer)
-            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else {
             const markedAnswer = document.getElementById("answer3").value
             console.log(markedAnswer)
-            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
+            if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         }
         console.log(correctAnswersCounter)
-        
+
         //Lógica de respuesta requerida
         let counterRespondidas = 0;
         let arrayInputs = document.querySelectorAll("input")
@@ -325,12 +370,19 @@ arrayInputs.forEach(function (input) {
             return
         }
         counter++
-        printQuestions(counter)
+        console.log("Contador de preguntas: " + counter)
+        if (counter <= 9) {
+            printQuestions(counter)
+        } else {
+            printResults()
+        }
     })
 }
 printQuestions(0);
 
-
+function printResults() {
+    document.body.innerHTML = "<h1>Se dibuja la nueva tarjeta con los resultados</h1>"
+}
 
 
 //HACER CONTADOR PARA PREVIAMENTE IMPRIMIR UN <p> (appendchild) y añadirle resultado con mensaje
@@ -355,11 +407,9 @@ printQuestions(0);
     p.style.fontSize = "16px";
     p.appendChild(mensaje);
 
-    document.getElementsByTagName("form").appendChild(p); // dibuja resultado
+    document.getElementsByClassName("sect1").appendChild(p); // dibuja resultado
 
 }); */
-
-
 
 
 /*GRÁFICA PIE PORCENTAJE
