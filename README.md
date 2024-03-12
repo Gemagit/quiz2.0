@@ -24,8 +24,8 @@ Es importante destacar la importancia que tiene hoy en día "mobile-first", la i
 ## 2. Tecnologies
 
 Las tecnologías usadas en este quiz son las siguientes:
--HTML
--CSS
--JAVASCRIPT
--GRÁFICAS
--FIREBASE
+1. HTML
+2. CSS
+3. JAVASCRIPT
+4. GRÁFICAS
+5. FIREBASE
