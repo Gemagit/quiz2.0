@@ -2,6 +2,12 @@
 let correctAnswersCounter = 0;
 
 async function printQuestions(preg) {
+    function buttonText() {
+        if (counter <= 8) {
+            return "Siguiente"
+        } else return "Comprueba tus resultados"
+    };
+
     let questionForm = `<section id="question_container">
                         <legend id="question"></legend>
                         <div id="answers_container">
@@ -27,7 +33,7 @@ async function printQuestions(preg) {
                         </div>
         
                     </section>
-                    <button>SIGUIENTE PREGUNTA</button>`
+                    <button>${buttonText()}</button>`
                     
     let response = await fetch("https://opentdb.com/api.php?amount=10&category=31&type=multiple");
     let data = await response.json();
@@ -124,8 +130,24 @@ async function printQuestions(preg) {
 printQuestions(0); 
 
 function printResults() {
-    document.body.innerHTML = "<h1>Se dibuja la nueva tarjeta con los resultados</h1>"
-}*/
+    document.getElementById("sect1").innerHTML = "";
+    let msj = "";
+
+    if (correctAnswersCounter <= 5) {
+        msj += `Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún tiene mucho que ofrecerte coleguita\n`;
+
+    } else {
+        msj += `Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+    };
+
+    let p = document.createElement("pre");
+    let mensaje = document.createTextNode(msj);
+    p.style.color = "#DD1C1A";
+    p.style.fontSize = "16px";
+    p.appendChild(mensaje);
+
+    document.getElementById("sect1").appendChild(p); // dibuja resultado
+} */
 
 let data = {
     "response_code": 0,
@@ -257,6 +279,11 @@ let counter = 0;
 let correctAnswersCounter = 0;
 
 function printQuestions(preg) {
+    function buttonText() {
+        if (counter <= 8) {
+            return "Siguiente"
+        } else return "Comprueba tus resultados"
+    };
     //Dibujar estructura del quiz en el DOM
     let questionForm = `<section id="question_container">
                             <legend id="question"></legend>
@@ -283,8 +310,7 @@ function printQuestions(preg) {
                             </div>
         
                         </section>
-                        <button>SIGUIENTE PREGUNTA</button>`
-
+                        <button>${buttonText()}</button>`
 
     document.querySelector("#sect1").innerHTML = questionForm;
 
@@ -375,7 +401,7 @@ function printQuestions(preg) {
             printQuestions(counter)
         } else {
             printResults()
-        }
+        } 
     })
 }
 printQuestions(0);
