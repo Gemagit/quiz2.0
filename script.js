@@ -81,7 +81,6 @@ async function printQuestions(preg) {
     })
 }
 printQuestions(0); */
-let rightAnswersCounter = 0;
 
 let data = {
     "response_code": 0,
@@ -207,11 +206,10 @@ let data = {
             ]
         }
     ]
-}
+};
 
 let counter = 0;
-console.log(counter)
-
+let rightAnswersCounter = 0;
 
 function printQuestions(preg) {
     let questionForm = `<section id="question_container">
@@ -244,11 +242,8 @@ function printQuestions(preg) {
     document.querySelector(".sect1").innerHTML = questionForm; //Pintamos la estructura del <form> en el DOM
 
     let question = data.results[preg].question;
-    console.log("Pregunta: " + question)
     let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
-    console.log("Respuesta correcta: " + correctAnswer);
     let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
-    console.log("Resto de respuestas: " + allAnswers)
     allAnswers.push(correctAnswer);
     console.log(allAnswers)
     let correctArr = correctAnswer.split();
@@ -288,6 +283,9 @@ function printQuestions(preg) {
     })
 }
 printQuestions(0);
+
+
+
 //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
 //Aquí recojo todos los inputs y los meto en una variable
 const arrayInputs = document.querySelectorAll("input");
