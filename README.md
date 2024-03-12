@@ -4,7 +4,7 @@ Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que
 ## Table of Contents
 1. Mobile First
 2. Tecnologies
-3. Funcionalidades
+3. Features
 4. Collaboration
 5. Diseño
 
@@ -29,3 +29,7 @@ Las tecnologías usadas en este quiz son las siguientes:
 3. JAVASCRIPT
 4. GRÁFICAS
 5. FIREBASE
+
+
+## 3. Features
+
