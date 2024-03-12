@@ -9,13 +9,13 @@ Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que
 5. Diseño
 
 ## Mobile First
-### Mobile
+### MOBILE
 Es importante destacar que le hemos dado importancia desde el principio a "mobile-first", la idea con ello es proveer al usuario una buena experiencia para todos los tamaños de pantalla—empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor.En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
 
 ![mobile](https://github.com/Gemagit/quiz2.0/assets/143506667/3e888ea9-e00d-406c-9b38-bc390955b284)
 
-### Ipad
+### IPAD
 ![ipad](https://github.com/Gemagit/quiz2.0/assets/143506667/c3de51bd-4fe1-4b35-bfc9-0ae6382fb6f5)
 
-### Desktop
+### DESKTOP
 ![desktop](https://github.com/Gemagit/quiz2.0/assets/143506667/fe591e99-7fec-42e1-bb75-18d2e3913682)
