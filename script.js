@@ -209,53 +209,51 @@ let data = {
 }
 
 let counter = 0;
-console.log(counter)
-
+let correctAnswersCounter = 0;
 
 function printQuestions(preg) {
+    //Dibujar estructura del quiz en el DOM
     let questionForm = `<section id="question_container">
-                        <legend id="question"></legend>
-                        <div id="answers_container">
-                            <div class="answer">
-                                <label id="answer0Label" for="answer0"></label>
-                                <input hidden id="answer0" type="radio" name="pregunta" value="" required>
+                            <legend id="question"></legend>
+                            <div id="answers_container">
+                                <div class="answer">
+                                    <label id="answer0Label" for="answer0"></label>
+                                    <input hidden id="answer0" class="clickAnswer" type="radio" name="pregunta" value="" required>
+                                </div>
+            
+                                <div class="answer">
+                                    <label id="answer1Label" for="answer1"></label>
+                                    <input hidden id="answer1" class="clickAnswer" type="radio" name="pregunta" value="" required>
+                                </div>
+            
+                                <div class="answer">
+                                    <label id="answer2Label" for="answer2"></label>
+                                    <input hidden id="answer2" class="clickAnswer" type="radio" name="pregunta" value="" required>
+                                </div>
+            
+                                <div class="answer">
+                                    <label id="answer3Label" for="answer3"></label>
+                                    <input hidden id="answer3" class="clickAnswer" type="radio" name="pregunta" value="" required>
+                                </div>
                             </div>
         
-                            <div class="answer">
-                                <label id="answer1Label" for="answer1"></label>
-                                <input hidden id="answer1" type="radio" name="pregunta" value="" required>
-                            </div>
-        
-                            <div class="answer">
-                                <label id="answer2Label" for="answer2"></label>
-                                <input hidden id="answer2" type="radio" name="pregunta" value="" required>
-                            </div>
-        
-                            <div class="answer">
-                                <label id="answer3Label" for="answer3"></label>
-                                <input hidden id="answer3" type="radio" name="pregunta" value="" required>
-                            </div>
-                        </div>
-        
-                    </section>
-                    <button>SIGUIENTE PREGUNTA</button>`
+                        </section>
+                        <button>SIGUIENTE PREGUNTA</button>`
 
-    document.querySelector(".sect1").innerHTML=questionForm;
+    document.querySelector(".sect1").innerHTML = questionForm;
 
+    //Obtener las rutas a los elementos a dibujar en el DOM
     let question = data.results[preg].question;
-    console.log("Pregunta: " + question)
     let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
-    console.log("Respuesta correcta: " + correctAnswer);
+    console.log("Correct answer: " + correctAnswer)
     let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
-    console.log("Resto de respuestas: " + allAnswers)
     allAnswers.push(correctAnswer);
-    console.log(allAnswers)
     let correctArr = correctAnswer.split();
-    console.log(correctArr)
     allAnswers.push(correctArr[preg]); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
 
+    //Pintar pregunta y respuestas en el DOM
     document.getElementById("answer0").setAttribute("value", allAnswers.shift()); //Al hacerlo sucesivamente impedimos que se repita ninguno de los elementos
     document.getElementById("answer0Label").innerHTML = document.getElementById("answer0").value; //Le dimos como valor al input el elemento extraido del array para después poder comprobar si coincide con correctAnswer o no
     document.getElementById("answer1").setAttribute("value", allAnswers.shift());
@@ -267,8 +265,30 @@ function printQuestions(preg) {
 
     document.getElementById("question").innerHTML = question;
 
+
     document.querySelector("button").addEventListener("click", function (event) {
         event.preventDefault();
+        //Lógica de validación de preguntas y contador de aciertos
+        if(document.getElementById("answer0").checked) {
+            const markedAnswer = document.getElementById("answer0").value
+            console.log(markedAnswer)
+            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
+        } else if(document.getElementById("answer1").checked) {
+            const markedAnswer = document.getElementById("answer1").value
+            console.log(markedAnswer)
+            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
+        } else if(document.getElementById("answer2").checked) {
+            const markedAnswer = document.getElementById("answer2").value
+            console.log(markedAnswer)
+            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
+        } else {
+            const markedAnswer = document.getElementById("answer3").value
+            console.log(markedAnswer)
+            if(correctAnswer == markedAnswer) {correctAnswersCounter += 1}
+        }
+        console.log(correctAnswersCounter)
+        
+        //Lógica de respuesta requerida
         let counterRespondidas = 0;
         let arrayInputs = document.querySelectorAll("input")
         arrayInputs.forEach(function (input) {
@@ -276,14 +296,11 @@ function printQuestions(preg) {
                 counterRespondidas++
             }
         })
-        console.log("Numero respuestas respondidas: " + counterRespondidas)
         if (counterRespondidas != 1) {
             alert('Debes seleccionar alguna respuesta')
             return
         }
-        console.log("counter", counter);
         counter++
-        console.log(counter)
         printQuestions(counter)
     })
 }
@@ -314,55 +331,11 @@ arrayInputs.forEach(function (input) {
     });
 });
 
-//AVISO DE RESPUESTAS NO CHEQUEADAS
-
-let submitButton = document.querySelector("button")
-
-submitButton.addEventListener("click", function (event) {
-    let counterRespondidas = 0;
-    let arrayInputs = document.querySelectorAll("input")
-    arrayInputs.forEach(function (input) {
-        if (input.checked) {
-            counterRespondidas++;
-        }
-    })
-    if (counterRespondidas != 10) {
-        alert('Debes seleccionar alguna respuesta')
-    }
-})
-
 //HACER CONTADOR PARA PREVIAMENTE IMPRIMIR UN <p> (appendchild) y añadirle resultado con mensaje
 
 //he accedido al formulario y le he creado el evento preventDefault para que cuando el usuario pulse submit tenga en cuenta una serie de condiciones antes de comprobar los aciertos
-document.querySelector("form").addEventListener("submit", function (event) {
+/* document.querySelector("button").addEventListener("click", function (event) {
     event.preventDefault();
-
-    console.log(event);
-    console.log(event.target.pregunta1);
-    const respuesta1 = event.target.pregunta1.value;
-    const respuesta2 = event.target.pregunta2.value;
-    const respuesta3 = event.target.pregunta3.value;
-    const respuesta4 = event.target.pregunta4.value;
-    const respuesta5 = event.target.pregunta5.value;
-    const respuesta6 = event.target.pregunta1.value;
-    const respuesta7 = event.target.pregunta2.value;
-    const respuesta8 = event.target.pregunta3.value;
-    const respuesta9 = event.target.pregunta4.value;
-    const respuesta10 = event.target.pregunta5.value;
-
-
-
-    let aciertos = 0;
-    if (respuesta1 === respuestasCorrectas.pregunta1) aciertos++;
-    if (respuesta2 === respuestasCorrectas.pregunta2) aciertos++;
-    if (respuesta3 === respuestasCorrectas.pregunta3) aciertos++;
-    if (respuesta4 === respuestasCorrectas.pregunta4) aciertos++;
-    if (respuesta5 === respuestasCorrectas.pregunta5) aciertos++;
-    if (respuesta6 === respuestasCorrectas.pregunta6) aciertos++;
-    if (respuesta7 === respuestasCorrectas.pregunta7) aciertos++;
-    if (respuesta8 === respuestasCorrectas.pregunta8) aciertos++;
-    if (respuesta9 === respuestasCorrectas.pregunta9) aciertos++;
-    if (respuesta10 === respuestasCorrectas.pregunta10) aciertos++;
 
     let msj = "";
 
@@ -383,7 +356,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 
     document.getElementsByTagName("form").appendChild(p); // dibuja resultado
 
-});
+}); */
 
 
 
