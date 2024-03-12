@@ -257,6 +257,11 @@ let counter = 0;
 let correctAnswersCounter = 0;
 
 function printQuestions(preg) {
+    function buttonText() {
+        if (counter <= 8) {
+            return "Siguiente"
+        } else return "Comprueba tus resultados"
+    };
     //Dibujar estructura del quiz en el DOM
     let questionForm = `<section id="question_container">
                             <legend id="question"></legend>
@@ -283,8 +288,7 @@ function printQuestions(preg) {
                             </div>
         
                         </section>
-                        <button>SIGUIENTE PREGUNTA</button>`
-
+                        <button>${buttonText()}</button>`
 
     document.querySelector("#sect1").innerHTML = questionForm;
 
@@ -375,7 +379,7 @@ function printQuestions(preg) {
             printQuestions(counter)
         } else {
             printResults()
-        }
+        } 
     })
 }
 printQuestions(0);
@@ -387,7 +391,7 @@ function printResults() {
     if (correctAnswersCounter <= 5) {
         msj += `Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún tiene mucho que ofrecerte coleguita\n`;
 
-    } else { //4 aciertos o más
+    } else {
         msj += `Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
     };
 
@@ -399,36 +403,6 @@ function printResults() {
 
     document.getElementById("sect1").appendChild(p); // dibuja resultado
 }
-
-
-//HACER CONTADOR PARA PREVIAMENTE IMPRIMIR UN <p> (appendchild) y añadirle resultado con mensaje
-
-//he accedido al formulario y le he creado el evento preventDefault para que cuando el usuario pulse submit tenga en cuenta una serie de condiciones antes de comprobar los aciertos
-/* document.querySelector("button").addEventListener("click", function (event) {
-    event.preventDefault();
-
-    let msj = "";
-
-    if (aciertos <= 5) {
-        msj += `Número de aciertos: ${aciertos}. \n Por favor, lea la documentación rockera.n`;
-
-    } else { //4 aciertos o más
-        msj += `Número de aciertos: ${aciertos}. \n ¡Enhorabuena, estás hecho un auténtico rockero!\n`;
-        event.target.submit();
-    }
-
-    let p = document.createElement("pre");
-    let mensaje = document.createTextNode(msj);
-    p.style.color = "#DD1C1A";
-    p.style.fontSize = "16px";
-    p.appendChild(mensaje);
-
-    document.getElementsBycl("form").appendChild(p); // dibuja resultado
-
-}); */
-
-
-
 
 /*GRÁFICA PIE PORCENTAJE
 
