@@ -7,3 +7,8 @@ Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que
 3. Funcionalidades
 4. Collaboration
 5. Diseño
+
+## Mobile First
+![mobile](https://github.com/Gemagit/quiz2.0/assets/143506667/3e888ea9-e00d-406c-9b38-bc390955b284)
+![ipad](https://github.com/Gemagit/quiz2.0/assets/143506667/c3de51bd-4fe1-4b35-bfc9-0ae6382fb6f5)
+![desktop](https://github.com/Gemagit/quiz2.0/assets/143506667/fe591e99-7fec-42e1-bb75-18d2e3913682)
