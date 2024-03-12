@@ -34,5 +34,6 @@ Las tecnologías usadas en este quiz son las siguientes:
 
 ## 3. Features
 
+Una de las grandes confusiones respecto de la cultura oriental que tienen quienes no están tan inmersos en ella es creer que el manga y el anime se refieren a la misma expresión cultural. Pero hablamos de dos conceptos diferentes, dos productos distintos que sólo se parecen. El manga es un cómic y el anime es un dibujo animado, y así de fácil deberíamos distinguirlos. Si eres amante de alguna de ellas te encantará responder a las preguntas que hemos planteado. En primer lugar hicimos petición a una API que nos proporcionaron como premisa del proyecto. Para ello hicimos un **fetch** desde Javascript para hacer la solicitud y seguidamente realizamos distintos algoritmos para que el usuario pudiera seleccionar 
 
 
