@@ -314,22 +314,7 @@ arrayInputs.forEach(function (input) {
     });
 });
 
-//AVISO DE RESPUESTAS NO CHEQUEADAS
 
-let submitButton = document.querySelector("button")
-
-submitButton.addEventListener("click", function (event) {
-    let counterRespondidas = 0;
-    let arrayInputs = document.querySelectorAll("input")
-    arrayInputs.forEach(function (input) {
-        if (input.checked) {
-            counterRespondidas++;
-        }
-    })
-    if (counterRespondidas != 10) {
-        alert('Debes seleccionar alguna respuesta')
-    }
-})
 
 //HACER CONTADOR PARA PREVIAMENTE IMPRIMIR UN <p> (appendchild) y añadirle resultado con mensaje
 
