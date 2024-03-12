@@ -267,6 +267,29 @@ function printQuestions(preg) {
 
     document.getElementById("question").innerHTML = question;
 
+    //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
+//Aquí recojo todos los inputs y los meto en una variable
+const arrayInputs = document.querySelectorAll("input");
+//el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
+// recorro todos los input 
+arrayInputs.forEach(function (input) {
+    //le digo que este pendiente cada vez que el usuario haga input
+    input.addEventListener("input", function (event) {
+        //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
+        //si checked es false
+        arrayInputs.forEach(
+            function (input) {
+                //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
+                if (input.checked) {
+                    input.parentElement.style.backgroundColor = "#212529";
+                } else {
+                    input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
+                }
+                //y ahora pintamelos claritos si no esta chequeado
+            })
+    });
+});
+
     document.querySelector("button").addEventListener("click", function (event) {
         event.preventDefault();
         let counterRespondidas = 0;
@@ -291,28 +314,6 @@ printQuestions(0);
 
 
 
-//SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
-//Aquí recojo todos los inputs y los meto en una variable
-const arrayInputs = document.querySelectorAll("input");
-//el evento input hace que se produzca un cambio cada vez que el usuario modifique algo, es decir cada vez que cambie el valor
-// recorro todos los input 
-arrayInputs.forEach(function (input) {
-    //le digo que este pendiente cada vez que el usuario haga input
-    input.addEventListener("input", function (event) {
-        //el evento input se acciona cuando el usuario hace cualquier cambio,cualquier cambio a cualquier valor
-        //si checked es false
-        arrayInputs.forEach(
-            function (input) {
-                //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
-                if (input.checked) {
-                    input.parentElement.style.backgroundColor = "black";
-                } else {
-                    input.parentElement.style.backgroundColor = " rgba(241, 243, 244, 0.5)";
-                }
-                //y ahora pintamelos claritos si no esta chequeado
-            })
-    });
-});
 
 
 
