@@ -42,7 +42,7 @@ async function printQuestions(preg) {
     console.log("Resto de respuestas: " + allAnswers)
     allAnswers.push(correctAnswer);
     console.log(allAnswers)
-   
+
     let correctArr = correctAnswer.split();
     console.log(correctArr)
     allAnswers.push(correctArr[preg]); //Array de 4 elementos con las respuestas
@@ -81,6 +81,7 @@ async function printQuestions(preg) {
     })
 }
 printQuestions(0); */
+let rightAnswersCounter = 0;
 
 let data = {
     "response_code": 0,
@@ -240,7 +241,7 @@ function printQuestions(preg) {
                     </section>
                     <button>SIGUIENTE PREGUNTA</button>`
 
-    document.querySelector(".sect1").innerHTML=questionForm;
+    document.querySelector(".sect1").innerHTML = questionForm; //Pintamos la estructura del <form> en el DOM
 
     let question = data.results[preg].question;
     console.log("Pregunta: " + question)
@@ -268,7 +269,6 @@ function printQuestions(preg) {
     document.getElementById("question").innerHTML = question;
 
     document.querySelector("button").addEventListener("click", function (event) {
-        event.preventDefault();
         let counterRespondidas = 0;
         let arrayInputs = document.querySelectorAll("input")
         arrayInputs.forEach(function (input) {
@@ -288,9 +288,6 @@ function printQuestions(preg) {
     })
 }
 printQuestions(0);
-
-
-
 //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
 //Aquí recojo todos los inputs y los meto en una variable
 const arrayInputs = document.querySelectorAll("input");
@@ -314,28 +311,10 @@ arrayInputs.forEach(function (input) {
     });
 });
 
-//AVISO DE RESPUESTAS NO CHEQUEADAS
-
-let submitButton = document.querySelector("button")
-
-submitButton.addEventListener("click", function (event) {
-    let counterRespondidas = 0;
-    let arrayInputs = document.querySelectorAll("input")
-    arrayInputs.forEach(function (input) {
-        if (input.checked) {
-            counterRespondidas++;
-        }
-    })
-    if (counterRespondidas != 10) {
-        alert('Debes seleccionar alguna respuesta')
-    }
-})
-
 //HACER CONTADOR PARA PREVIAMENTE IMPRIMIR UN <p> (appendchild) y añadirle resultado con mensaje
 
 //he accedido al formulario y le he creado el evento preventDefault para que cuando el usuario pulse submit tenga en cuenta una serie de condiciones antes de comprobar los aciertos
-document.querySelector("form").addEventListener("submit", function (event) {
-    event.preventDefault();
+document.querySelector("button").addEventListener("click", function (event) {
 
     console.log(event);
     console.log(event.target.pregunta1);
@@ -364,7 +343,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
     if (respuesta9 === respuestasCorrectas.pregunta9) aciertos++;
     if (respuesta10 === respuestasCorrectas.pregunta10) aciertos++;
 
-    let msj = "";
+    /* let msj = "";
 
 
     if (aciertos <= 5) {
@@ -381,7 +360,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
     p.style.fontSize = "16px";
     p.appendChild(mensaje);
 
-    document.getElementsByTagName("form").appendChild(p); // dibuja resultado
+    document.getElementsByTagName("form").appendChild(p); // dibuja resultado */
 
 });
 
