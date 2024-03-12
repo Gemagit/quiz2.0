@@ -32,7 +32,7 @@ async function printQuestions(preg) {
     let response = await fetch("https://opentdb.com/api.php?amount=10&category=31&type=multiple");
     let data = await response.json();
 
-    document.querySelector(".sect1").innerHTML = questionForm; //Pintamos la estructura del <form> en el DOM
+    document.querySelector("#sect1").innerHTML = questionForm; //Pintamos la estructura del <form> en el DOM
 
     let question = data.results[preg].question;
     let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
@@ -286,7 +286,7 @@ function printQuestions(preg) {
                         <button>SIGUIENTE PREGUNTA</button>`
 
 
-    document.querySelector(".sect1").innerHTML = questionForm;
+    document.querySelector("#sect1").innerHTML = questionForm;
 
     //Obtener las rutas a los elementos a dibujar en el DOM
     let question = data.results[preg].question;
@@ -381,7 +381,23 @@ function printQuestions(preg) {
 printQuestions(0);
 
 function printResults() {
-    document.body.innerHTML = "<h1>Se dibuja la nueva tarjeta con los resultados</h1>"
+    document.getElementById("sect1").innerHTML = "";
+    let msj = "";
+
+    if (correctAnswersCounter <= 5) {
+        msj += `Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún tiene mucho que ofrecerte coleguita\n`;
+
+    } else { //4 aciertos o más
+        msj += `Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+    };
+
+    let p = document.createElement("pre");
+    let mensaje = document.createTextNode(msj);
+    p.style.color = "#DD1C1A";
+    p.style.fontSize = "16px";
+    p.appendChild(mensaje);
+
+    document.getElementById("sect1").appendChild(p); // dibuja resultado
 }
 
 
@@ -407,9 +423,11 @@ function printResults() {
     p.style.fontSize = "16px";
     p.appendChild(mensaje);
 
-    document.getElementsByClassName("sect1").appendChild(p); // dibuja resultado
+    document.getElementsBycl("form").appendChild(p); // dibuja resultado
 
 }); */
+
+
 
 
 /*GRÁFICA PIE PORCENTAJE
