@@ -34,7 +34,8 @@ async function printQuestions(preg) {
         
                     </section>
                     <button>${buttonText()}</button>`
-                    
+
+
     let response = await fetch("https://opentdb.com/api.php?amount=10&category=31&type=multiple");
     let data = await response.json();
 
@@ -43,9 +44,7 @@ async function printQuestions(preg) {
     let question = data.results[preg].question;
     let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
     let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
-    allAnswers.push(correctAnswer);
-    let correctArr = correctAnswer.split();
-    allAnswers.push(correctArr[preg]); //Array de 4 elementos con las respuestas
+    allAnswers.push(correctAnswer); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
 
@@ -59,6 +58,8 @@ async function printQuestions(preg) {
     document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value;
 
     document.getElementById("question").innerHTML = question;
+
+
 
     //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
     //Aquí recojo todos los inputs y los meto en una variable
@@ -74,7 +75,7 @@ async function printQuestions(preg) {
                 function (input) {
                     //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
                     if (input.checked) {
-                        input.parentElement.style.backgroundColor = "grey";
+                        input.parentElement.style.backgroundColor = "black";
                     } else {
                         input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
                     }
@@ -89,22 +90,17 @@ async function printQuestions(preg) {
         //Lógica de validación de preguntas y contador de aciertos
         if (document.getElementById("answer0").checked) {
             const markedAnswer = document.getElementById("answer0").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else if (document.getElementById("answer1").checked) {
             const markedAnswer = document.getElementById("answer1").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else if (document.getElementById("answer2").checked) {
             const markedAnswer = document.getElementById("answer2").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else {
             const markedAnswer = document.getElementById("answer3").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         }
-        console.log(correctAnswersCounter)
 
         //Lógica de respuesta requerida
         let counterRespondidas = 0;
@@ -119,7 +115,6 @@ async function printQuestions(preg) {
             return
         }
         counter++
-        console.log("Contador de preguntas: " + counter)
         if (counter <= 9) {
             printQuestions(counter)
         } else {
@@ -127,21 +122,21 @@ async function printQuestions(preg) {
         }
     })
 }
-printQuestions(0); 
+printQuestions(0);
 
 function printResults() {
     document.getElementById("sect1").innerHTML = "";
 
     let pre = document.createElement("pre");
-    let p= document.createElement("p");
-    
+    let p = document.createElement("p");
+
 
     if (correctAnswersCounter <= 5) {
         p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
-        pre.setAttribute("id","preRed");
+        pre.setAttribute("id", "preRed");
     } else { //5 aciertos o más
-        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
-        pre.setAttribute("id","preGreen");
+        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+        pre.setAttribute("id", "preGreen");
     };
 
     pre.appendChild(p);
