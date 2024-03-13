@@ -1,6 +1,9 @@
 /* let counter = 0;
 let correctAnswersCounter = 0;
 
+let dataUsers = JSON.stringify([]);
+localStorage.setItem("getDataUsers", dataUsers);
+
 async function printQuestions(preg) {
     function buttonText() {
         if (counter <= 8) {
@@ -141,6 +144,34 @@ function printResults() {
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
+
+    // La fecha en el momento de jugar la partida
+    let month = (new Date().getMonth(+1)) + 1;
+    let day = Date().slice(8, 10);
+    let year = Date().slice(11, 15);
+    let date = day + "/" + month + "/" + year;
+
+    let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
+    console.log(getLocalStorage);
+    let dateScore = {correctAnswersCounter, date};
+    console.log(dateScore);
+    getLocalStorage.push(dateScore);
+    localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
+
+    localStorage.setItem("", dataUsers);
+
+    console.log(JSON.parse(localStorage.getItem("getDataUsers")));
+
+    // Crear botón de reinicio de partida
+    let button = document.createElement("button");
+    button.innerHTML = "Jugar otra vez";
+    button.setAttribute("id", "restart");
+    document.getElementById("sect1").appendChild(button);
+
+    document.getElementById("restart").addEventListener("click", function (event) {
+        counter = 0;
+        printQuestions(0);
+    })
 } */
 
 let data = {
@@ -272,6 +303,7 @@ let data = {
 let counter = 0;
 let correctAnswersCounter = 0;
 
+//Local Storage
 let dataUsers = JSON.stringify([]);
 console.log("Esto es dataUsers: " + dataUsers)
 localStorage.setItem("getDataUsers", dataUsers);
@@ -313,25 +345,37 @@ function printQuestions(preg) {
 
     document.querySelector("#sect1").innerHTML = questionForm;
 
+    let questionObject = JSON.parse(JSON.stringify(data.results[preg]))
+    console.log(questionObject)
     //Obtener las rutas a los elementos a dibujar en el DOM
-    let question = data.results[preg].question;
-    let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
-    let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
-    allAnswers.push(correctAnswer);
-    let correctArr = correctAnswer.split();
-    allAnswers.push(correctArr[preg]); //Array de 4 elementos con las respuestas
+    let question = questionObject.question;
+    let correctAnswer = questionObject.correct_answer; // --> La respuesta correcta sigue estando aquí
+    console.log("La respuesta correcta: " + correctAnswer)
+    let incorrectAnswers = questionObject.incorrect_answers; // --> Array con tres elementos
+    console.log(incorrectAnswers)
+    let allAnswers = incorrectAnswers;
+    allAnswers.push(correctAnswer); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
+    console.log(allAnswers)
+    console.log(incorrectAnswers)
 
     //Pintar pregunta y respuestas en el DOM
     document.getElementById("answer0").setAttribute("value", allAnswers.shift()); //Al hacerlo sucesivamente impedimos que se repita ninguno de los elementos
     document.getElementById("answer0Label").innerHTML = document.getElementById("answer0").value; //Le dimos como valor al input el elemento extraido del array para después poder comprobar si coincide con correctAnswer o no
+    console.log(allAnswers)
     document.getElementById("answer1").setAttribute("value", allAnswers.shift());
     document.getElementById("answer1Label").innerHTML = document.getElementById("answer1").value;
+    console.log(allAnswers)
     document.getElementById("answer2").setAttribute("value", allAnswers.shift());
     document.getElementById("answer2Label").innerHTML = document.getElementById("answer2").value;
+    console.log(allAnswers)
     document.getElementById("answer3").setAttribute("value", allAnswers.shift()); //Al final el array allAnswers queda vacío
     document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value;
+    console.log(allAnswers)
+
+    console.log("Array de respuestas incorrectas: " + incorrectAnswers)
+    console.log("El array respuestas despues de todo: " + allAnswers)
 
     document.getElementById("question").innerHTML = question;
 
@@ -365,22 +409,17 @@ function printQuestions(preg) {
         //Lógica de validación de preguntas y contador de aciertos
         if (document.getElementById("answer0").checked) {
             const markedAnswer = document.getElementById("answer0").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else if (document.getElementById("answer1").checked) {
             const markedAnswer = document.getElementById("answer1").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else if (document.getElementById("answer2").checked) {
             const markedAnswer = document.getElementById("answer2").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else {
             const markedAnswer = document.getElementById("answer3").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         }
-        console.log(correctAnswersCounter)
 
         //Lógica de respuesta requerida
         let counterRespondidas = 0;
@@ -395,7 +434,6 @@ function printQuestions(preg) {
             return */
         }
         counter++
-        console.log("Contador de preguntas: " + counter)
         if (counter <= 9) {
             printQuestions(counter)
         } else {
@@ -424,20 +462,34 @@ function printResults() {
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
 
-    /* let dataUsers = JSON.stringify([]);
-    localStorage.setItem("getDataUsers", dataUsers); */
-
     // La fecha en el momento de jugar la partida
-    let month = (new Date().getMonth(+1)) + 1
-    let day = Date().slice(8, 10)
-    let year = Date().slice(11, 15)
-    let date = day + "/" + month + "/" + year
+    let month = (new Date().getMonth(+1)) + 1;
+    let day = Date().slice(8, 10);
+    let year = Date().slice(11, 15);
+    let date = day + "/" + month + "/" + year;
 
-    let getLocalStorage = JSON.parse(localStorage.getItem("dataUsers"));
-    console.log(getLocalStorage)
-    let dateScore = {correctAnswersCounter, date}
-    console.log(dateScore)
+    let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
+    console.log(getLocalStorage);
+    let dateScore = {correctAnswersCounter, date};
+    console.log(dateScore);
+    getLocalStorage.push(dateScore);
+    localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
 
+    localStorage.setItem("", dataUsers);
+
+    console.log(JSON.parse(localStorage.getItem("getDataUsers")));
+
+    // Crear botón de reinicio de partida
+    let button = document.createElement("button");
+    button.innerHTML = "Jugar otra vez";
+    button.setAttribute("id", "restart");
+    document.getElementById("sect1").appendChild(button);
+
+    document.getElementById("restart").addEventListener("click", function (event) {
+        counter = 0;
+        correctAnswersCounter = 0;
+        printQuestions(0);
+    })
 }
 
 
