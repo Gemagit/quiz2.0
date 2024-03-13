@@ -131,22 +131,21 @@ printQuestions(0);
 
 function printResults() {
     document.getElementById("sect1").innerHTML = "";
-    let msj = "";
+
+    let pre = document.createElement("pre");
+    let p= document.createElement("p");
+    
 
     if (correctAnswersCounter <= 5) {
-        msj += `Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún tiene mucho que ofrecerte coleguita\n`;
-
-    } else {
-        msj += `Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
+        pre.setAttribute("id","preRed");
+    } else { //5 aciertos o más
+        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+        pre.setAttribute("id","preGreen");
     };
 
-    let p = document.createElement("pre");
-    let mensaje = document.createTextNode(msj);
-    p.style.color = "#DD1C1A";
-    p.style.fontSize = "16px";
-    p.appendChild(mensaje);
-
-    document.getElementById("sect1").appendChild(p); // dibuja resultado
+    pre.appendChild(p);
+    document.getElementById("sect1").appendChild(pre); // dibuja resultado
 } */
 
 let data = {
@@ -392,8 +391,8 @@ function printQuestions(preg) {
             }
         })
         if (counterRespondidas != 1) {
-            /* alert('Debes seleccionar alguna respuesta')
-            return */
+            alert('Debes seleccionar alguna respuesta')
+            return 
         }
         counter++
         console.log("Contador de preguntas: " + counter)
