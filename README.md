@@ -50,6 +50,8 @@ Cuando haya respondido hará **click** en "Siguiente pregunta" y así sucesivame
 
 Como anexo a esto también se añadirá una **gráfica** con el porcentaje de aciertos con respecto a otros usuarios.
 
+![Captura de pantalla 2024-03-13 a las 22 38 15](https://github.com/Gemagit/quiz2.0/assets/143506667/e1439d0c-16fb-4f77-98bc-6f24a576a99f)
+
 ## 4. Design
 
 Una de las grandes confusiones respecto de la cultura oriental que tienen quienes no están tan inmersos en ella es creer que el manga y el anime se refieren a la misma expresión cultural. Pero hablamos de dos conceptos diferentes, dos productos distintos que sólo se parecen. El manga es un cómic y el anime es un dibujo animado, y así de fácil deberíamos distinguirlos. 
