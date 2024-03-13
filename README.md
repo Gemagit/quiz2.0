@@ -1,7 +1,8 @@
 # 🇯🇵 ANIMANGA quiz2.0 🇯🇵
 
 ## Introduction
-Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que hemos aprendido lo que llevamos de curso. Se trata de un cuestionario divertido con 10 preguntas que apareceran aleatoriamente y como broche final podrás ver tus resultados y compararlos, mediante una gráfica, con el resto de personas que se hayan registrados y hayan hecho uso también de él.
+Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que hemos aprendido lo que llevamos de curso. Se trata de un cuestionario divertido de 10 preguntas que apareceran aleatoriamente en el navegador con sus respectivas respuestas. Como broche final podrás comprobar tus resultados y compararlos, mediante una gráfica, con el resto de personas que hayan particpado para ver puntuaciones.
+
 ## Table of Contents
 1. Mobile First
 2. Tecnologies
@@ -11,7 +12,7 @@ Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que
 
 ## 1. Mobile First
 
-Es importante destacar la importancia que tiene hoy en día "mobile-first", la idea con ello es proveer al usuario una buena experiencia para todos los tamaños de pantalla, empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor.En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
+Hay que destacar la importancia que tiene hoy en día "mobile-first", con ello, se provee al usuario de una buena experiencia para todos los tamaños de pantalla, empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor.En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
 
 ### MOBILE
 ![mobile](https://github.com/Gemagit/quiz2.0/assets/143506667/3e888ea9-e00d-406c-9b38-bc390955b284)
