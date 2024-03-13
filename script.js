@@ -1,5 +1,8 @@
-let counter = 0;
+/*let counter = 0;
 let correctAnswersCounter = 0;
+
+let dataUsers = JSON.stringify([]);
+localStorage.setItem("getDataUsers", dataUsers);
 
 async function printQuestions(preg) {
     function buttonText() {
@@ -41,9 +44,13 @@ async function printQuestions(preg) {
 
     document.querySelector("#sect1").innerHTML = questionForm; //Pintamos la estructura del <form> en el DOM
 
-    let question = data.results[preg].question;
-    let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
-    let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
+    let questionObject = JSON.parse(JSON.stringify(data.results[preg]))
+
+    //Obtener las rutas a los elementos a dibujar en el DOM
+    let question = questionObject.question;
+    let correctAnswer = questionObject.correct_answer; // --> La respuesta correcta sigue estando aquí
+    let incorrectAnswers = questionObject.incorrect_answers; // --> Array con tres elementos
+    let allAnswers = incorrectAnswers;
     allAnswers.push(correctAnswer); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
@@ -58,7 +65,6 @@ async function printQuestions(preg) {
     document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value;
 
     document.getElementById("question").innerHTML = question;
-
 
 
     //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
@@ -130,7 +136,6 @@ function printResults() {
     let pre = document.createElement("pre");
     let p = document.createElement("p");
 
-
     if (correctAnswersCounter <= 5) {
         p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
         pre.setAttribute("id", "preRed");
@@ -143,7 +148,71 @@ function printResults() {
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
 }
 
-/* let data = {
+
+// La fecha en el momento de jugar la partida
+let month = (new Date().getMonth(+1)) + 1;
+let day = Date().slice(8, 10);
+let year = Date().slice(11, 15);
+let date = day + "/" + month + "/" + year;
+
+let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
+let dateScore = { correctAnswersCounter, date };
+getLocalStorage.push(dateScore);
+localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
+
+let dataUsers1 = JSON.parse(localStorage.getItem("getDataUsers"));
+let scores = [];
+let dates1 = [];
+for (let i = 0; i < dataUsers1.length; i++) {
+    scores.push(dataUsers1[i].correctAnswersCounter);
+    dates1.push(dataUsers1[i].date);
+}
+
+
+let article = document.createElement("article");
+article.setAttribute("class", "graph")
+document.getElementById("sect1").appendChild(article);
+
+//Gráfica
+var data = {
+    labels: dates1,
+    series: [
+        scores
+    ]
+};
+
+var options = {
+    seriesBarDistance: 10,
+};
+
+var responsiveOptions = [
+    ['screen and (max-width: 640px)', {
+        seriesBarDistance: 5,
+        axisX: {
+            labelInterpolationFnc: function (value) {
+                return value[0];
+            }
+        }
+    }]
+];
+
+new Chartist.Bar('.graph', data, options, responsiveOptions);
+
+
+// Crear botón de reinicio de partida
+let button = document.createElement("button");
+button.innerHTML = "Jugar otra vez";
+button.setAttribute("id", "restart");
+document.getElementById("sect1").appendChild(button);
+
+document.getElementById("restart").addEventListener("click", function (event) {
+    counter = 0;
+    printQuestions(0);
+})
+*/
+
+
+let data = {
     "response_code": 0,
     "results": [
         {
@@ -272,6 +341,11 @@ function printResults() {
 let counter = 0;
 let correctAnswersCounter = 0;
 
+//Local Storage
+let dataUsers = JSON.stringify([]);
+localStorage.setItem("getDataUsers", dataUsers);
+
+
 function printQuestions(preg) {
     function buttonText() {
         if (counter <= 8) {
@@ -308,13 +382,13 @@ function printQuestions(preg) {
 
     document.querySelector("#sect1").innerHTML = questionForm;
 
+    let questionObject = JSON.parse(JSON.stringify(data.results[preg]))
     //Obtener las rutas a los elementos a dibujar en el DOM
-    let question = data.results[preg].question;
-    let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
-    let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
-    allAnswers.push(correctAnswer);
-    let correctArr = correctAnswer.split();
-    allAnswers.push(correctArr[preg]); //Array de 4 elementos con las respuestas
+    let question = questionObject.question;
+    let correctAnswer = questionObject.correct_answer; // --> La respuesta correcta sigue estando aquí
+    let incorrectAnswers = questionObject.incorrect_answers; // --> Array con tres elementos
+    let allAnswers = incorrectAnswers;
+    allAnswers.push(correctAnswer); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
 
@@ -327,6 +401,7 @@ function printQuestions(preg) {
     document.getElementById("answer2Label").innerHTML = document.getElementById("answer2").value;
     document.getElementById("answer3").setAttribute("value", allAnswers.shift()); //Al final el array allAnswers queda vacío
     document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value;
+    
 
     document.getElementById("question").innerHTML = question;
 
@@ -345,7 +420,7 @@ function printQuestions(preg) {
                 function (input) {
                     //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
                     if (input.checked) {
-                        input.parentElement.style.backgroundColor = "grey";
+                        input.parentElement.style.backgroundColor = "black";
                     } else {
                         input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
                     }
@@ -360,22 +435,17 @@ function printQuestions(preg) {
         //Lógica de validación de preguntas y contador de aciertos
         if (document.getElementById("answer0").checked) {
             const markedAnswer = document.getElementById("answer0").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else if (document.getElementById("answer1").checked) {
             const markedAnswer = document.getElementById("answer1").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else if (document.getElementById("answer2").checked) {
             const markedAnswer = document.getElementById("answer2").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         } else {
             const markedAnswer = document.getElementById("answer3").value
-            console.log(markedAnswer)
             if (correctAnswer == markedAnswer) { correctAnswersCounter += 1 }
         }
-        console.log(correctAnswersCounter)
 
         //Lógica de respuesta requerida
         let counterRespondidas = 0;
@@ -386,16 +456,17 @@ function printQuestions(preg) {
             }
         })
         if (counterRespondidas != 1) {
+
             alert('Debes seleccionar alguna respuesta')
-            return 
+             return 
+
         }
         counter++
-        console.log("Contador de preguntas: " + counter)
         if (counter <= 9) {
             printQuestions(counter)
         } else {
             printResults()
-        } 
+        }
     })
 }
 printQuestions(0);
@@ -403,42 +474,90 @@ printQuestions(0);
 function printResults() {
     document.getElementById("sect1").innerHTML = "";
 
-  
 
     let pre = document.createElement("pre");
-    let p= document.createElement("p");
-    
+    let p = document.createElement("p");
+
 
     if (correctAnswersCounter <= 5) {
         p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}.<br> \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
-        pre.setAttribute("id","preRed");
+        pre.setAttribute("id", "preRed");
     } else { //5 aciertos o más
-        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}.<br> \n ¡¡¡Enhorabuena!!!\n Te nombramos otaku honorífico!\n`;
-        pre.setAttribute("id","preGreen");
+        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}.<br> \n ¡¡¡Enhorabuena!!!\n Te nombramos otaku honorífico!\n`;
+        pre.setAttribute("id", "preGreen");
     };
 
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
-} */
+
+
+    // La fecha en el momento de jugar la partida
+    let month = (new Date().getMonth(+1)) + 1;
+    let day = Date().slice(8, 10);
+    let year = Date().slice(11, 15);
+    let date = day + "/" + month + "/" + year;
+
+    let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
+    let dateScore = { correctAnswersCounter, date };
+    getLocalStorage.push(dateScore);
+    localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
+
+    let dataUsers1 = JSON.parse(localStorage.getItem("getDataUsers"));
+    let scores = [];
+    let dates1=[];
+    for (let i = 0; i <dataUsers1.length; i++) {
+       scores.push(dataUsers1[i].correctAnswersCounter);
+       dates1.push(dataUsers1[i].date);
+    }
+    
+
+
+    let article = document.createElement("article");
+    article.setAttribute("class", "graph")
+    document.getElementById("sect1").appendChild(article);
+
+    var data = {
+        labels: dates1,
+        series: [
+          scores
+        ]
+      };
+      
+      var options = {
+        seriesBarDistance: 10,
+      };
+      
+      var responsiveOptions = [
+        ['screen and (max-width: 640px)', {
+          seriesBarDistance: 5,
+          axisX: {
+            labelInterpolationFnc: function (value) {
+              return value[0];
+            }
+          }
+        }]
+      ];
+      
+      new Chartist.Bar('.graph', data, options, responsiveOptions);
+
+
+    // Crear botón de reinicio de partida
+    let button = document.createElement("button");
+    button.innerHTML = "Jugar otra vez";
+    button.setAttribute("id", "restart");
+    document.getElementById("sect1").appendChild(button);
+
+    document.getElementById("restart").addEventListener("click", function (event) {
+        counter = 0;
+        correctAnswersCounter = 0;
+        printQuestions(0);
+    })
+
+}
 
 
 
-
-/*/GRÁFICA PIE PORCENTAJE
-
-var data1 = {
-  series: [5, 3, 4]
-};
-
-var sum = function(a, b) { return a + b };
-
-new Chartist.Pie('.ct-chart', data, {
-  labelInterpolationFnc: function(value) {
-    return Math.round(value / data.series.reduce(sum) * 100) + '%';
-  }
-});
-;*/
 
 
 
