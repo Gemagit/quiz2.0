@@ -12,7 +12,7 @@ Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que
 
 ## 1. Mobile First
 
-Hay que destacar la importancia que tiene hoy en día "mobile-first", con ello, se provee al usuario de una buena experiencia para todos los tamaños de pantalla, empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor.En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
+Hay que destacar la importancia que tiene hoy en día "mobile-first", con ello, se provee al usuario de una buena experiencia para todos los tamaños de pantalla, empezando por una experiencia de usuario que funcione bien para dispositivos pequeños, para posteriormente, basada en dicha experiencia, continuar desarrollando para enriquecer la experiencia de usuario conforme el tamaño de pantalla es mayor. En este caso os mostramos lo bien que se adapta nuestro proyecto a un dispositivo móvil, a un ipad y a un ordenador.
 
 ### MOBILE
 ![mobile](https://github.com/Gemagit/quiz2.0/assets/143506667/3e888ea9-e00d-406c-9b38-bc390955b284)
@@ -63,7 +63,7 @@ Si eres amante de alguna de ellas te encantará responder a las preguntas que he
 
 ## 5. Colaboration
 
-Los creadores de este quiz somos Alberto González y Gema Millán. Dos estudiantes inquietos de Full Stack que disfrutan programando y han vivido con entusiasmo este proceso tan bonito de poder comenzar un proyecto partiendo de cero y que de como resultado algo tan dinámico y creativo.
+Los creadores de este quiz somos Alberto González y Gema Millán. Dos estudiantes inquietos de Full Stack que disfrutan programando y han vivido con entusiasmo este proceso tan bonito de poder comenzar un proyecto partiendo de cero y que dé como resultado algo tan dinámico y creativo.
 
 ![Captura de pantalla 2024-03-13 a las 16 15 39](https://github.com/Gemagit/quiz2.0/assets/143506667/4b5a34e0-1914-4145-af1f-a52c3c407f59)
 ![Captura de pantalla 2024-03-13 a las 16 18 37](https://github.com/Gemagit/quiz2.0/assets/143506667/5fde3cb5-86b7-4e4a-b5f7-d6e5c86a93e7)
