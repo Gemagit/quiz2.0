@@ -61,7 +61,7 @@ section {
 #preRed {
     background-color: #C1493E;
     color: black;
-    font-size: 16px;
+    font-size: 12px;
     display: flex;
     flex-direction: column;
     margin-top: 130px;
@@ -79,7 +79,7 @@ section {
 #preGreen {
     background-color:#A7C957;
     color: black;
-    font-size: 16px;
+    font-size: 12px;
     display: flex;
     flex-direction: column;
     margin-top: 130px;
@@ -149,7 +149,7 @@ label {
 
 
 label:hover {
-    background-color: white;
+    background-color: grey;
     opacity: 1.2;
     zoom: 1;
 }
@@ -224,7 +224,15 @@ h1 {
         margin-bottom: 8px;
     }
 
+    #preRed {
+        font-size: 1.4rem;
+        height: 12rem;
+    }
 
+    #preGreen {
+        font-size: 1.4rem;
+        height: 12rem;
+    }
 
     .answer {
         width: 33.5%;
