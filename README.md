@@ -55,6 +55,8 @@ Una de las grandes confusiones respecto de la cultura oriental que tienen quiene
 
 Los creadores de este quiz somos Alberto González y Gema Millán. Dos estudiantes inquietos de Full Stack que disfrutan programando y han vivido con entusiasmo este proceso tan bonito de poder comenzar un proyecto partiendo de cero y que de como resultado algo tan dinámico y creativo.
 
+![Captura de pantalla 2024-03-13 a las 16 15 39](https://github.com/Gemagit/quiz2.0/assets/143506667/4b5a34e0-1914-4145-af1f-a52c3c407f59)
+![Captura de pantalla 2024-03-13 a las 16 16 27](https://github.com/Gemagit/quiz2.0/assets/143506667/37408f6c-fe29-4ddf-abbb-79d856b52ae5)
 
 
 
