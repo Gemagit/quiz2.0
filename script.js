@@ -1,4 +1,4 @@
-let counter = 0;
+/*let counter = 0;
 let correctAnswersCounter = 0;
 
 async function printQuestions(preg) {
@@ -142,8 +142,9 @@ function printResults() {
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
 }
+*/
 
-/* let data = {
+let data = {
     "response_code": 0,
     "results": [
         {
@@ -345,7 +346,7 @@ function printQuestions(preg) {
                 function (input) {
                     //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
                     if (input.checked) {
-                        input.parentElement.style.backgroundColor = "grey";
+                        input.parentElement.style.backgroundColor = "black";
                     } else {
                         input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
                     }
@@ -386,8 +387,8 @@ function printQuestions(preg) {
             }
         })
         if (counterRespondidas != 1) {
-            alert('Debes seleccionar alguna respuesta')
-            return 
+            /*  alert('Debes seleccionar alguna respuesta')
+             return */
         }
         counter++
         console.log("Contador de preguntas: " + counter)
@@ -395,7 +396,7 @@ function printQuestions(preg) {
             printQuestions(counter)
         } else {
             printResults()
-        } 
+        }
     })
 }
 printQuestions(0);
@@ -403,42 +404,68 @@ printQuestions(0);
 function printResults() {
     document.getElementById("sect1").innerHTML = "";
 
-  
+
 
     let pre = document.createElement("pre");
-    let p= document.createElement("p");
-    
+    let p = document.createElement("p");
+
 
     if (correctAnswersCounter <= 5) {
         p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}.<br> \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
-        pre.setAttribute("id","preRed");
+        pre.setAttribute("id", "preRed");
     } else { //5 aciertos o más
-        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}.<br> \n ¡¡¡Enhorabuena!!!\n Te nombramos otaku honorífico!\n`;
-        pre.setAttribute("id","preGreen");
+        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}.<br> \n ¡¡¡Enhorabuena!!!\n Te nombramos otaku honorífico!\n`;
+        pre.setAttribute("id", "preGreen");
     };
 
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
-} */
+
+
+    let dataUsers = JSON.stringify([
+        { "correctAnswersCounter": 4, "date": "13/3/2024" },
+        { "correctAnswersCounter": 6, "date": "13/3/2024" },
+        { "correctAnswersCounter": 2, "date": "13/3/2024" },
+        { "correctAnswersCounter": 10, "date": "13/3/2024" },
+        { "correctAnswersCounter": 1, "date": "13/3/2024" }
+    ]);
+    
+    console.log("Esto es dataUsers: " + dataUsers)
+    localStorage.setItem("getDataUsers", dataUsers);
+
+
+    let article = document.createElement("article");
+    document.getElementById("graph").appendChild(article);
+
+    /*let date = [];//creamos un array vacío para ir pusheando los datos obtenidos con la fecha 
+    let correctAnswersCounter = [];//creamos un array vacío para ir pusheando los datos obtenidos de las puntuaciones con las respuestas acertadas
+    let resultados = dataUsers.results;//metemos en una variable el acceso al array de objetos results
+    for (let i = 0; i < resultados.length; i++) {//iteramos sobre el array de la propiedad results
+        // console.log(resultados[i]);
+        correctAnswersCounter.push(resultados[i].correctAnswersCounter);//pusheamos a la variable correctAnswers las acertadas de las respuestas ok
+        
+    }
+    console.log(date);*/
+
+    new Chartist.Line('graph', {//pintamos la gráfica y le pasamos por parámetro la clase del div donde vamos a pintar la gráfica
+
+        labels: correctAnswersCounter, //metemos el array de respuestas acertadas
+        series: [date] //metemos el array de fechas
+    }, {
+        fullWidth: true,
+        chartPadding: {
+            right: 40,
+            bottom: 40
+        }
+    });
+}
 
 
 
 
-/*/GRÁFICA PIE PORCENTAJE
 
-var data1 = {
-  series: [5, 3, 4]
-};
 
-var sum = function(a, b) { return a + b };
-
-new Chartist.Pie('.ct-chart', data, {
-  labelInterpolationFnc: function(value) {
-    return Math.round(value / data.series.reduce(sum) * 100) + '%';
-  }
-});
-;*/
 
 
 
