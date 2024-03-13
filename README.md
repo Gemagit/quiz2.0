@@ -44,6 +44,8 @@ También cabe destacar que cuando el usuario no responde y quiere pasar a la sig
 
 Cuando haya respondido hará **click** en "Siguiente pregunta" y así sucesivamente hasta completar un número de 10 preguntas con sus respectivas respuestas. Al llegar a la pregunta 10, en lugar de "Siguiente pregunta", aparecerá en el botón "Comprueba tus resultados". Este botón te mostrará tu **puntuación** en un cartelito con un mensaje y el **número de aciertos**.
 
+![Captura de pantalla 2024-03-13 a las 16 57 53](https://github.com/Gemagit/quiz2.0/assets/143506667/fa3c8021-3733-4ccf-b93a-89dfe358e0e2)
+![Captura de pantalla 2024-03-13 a las 17 00 54](https://github.com/Gemagit/quiz2.0/assets/143506667/1c95e491-a15e-414d-b432-58b02ca5783a)
 
 Como anexo a esto también se añadirá una **gráfica** con el porcentaje de aciertos con respecto a otros usuarios.
 
