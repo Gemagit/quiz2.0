@@ -1,4 +1,4 @@
-/* let counter = 0;
+let counter = 0;
 let correctAnswersCounter = 0;
 
 async function printQuestions(preg) {
@@ -74,7 +74,7 @@ async function printQuestions(preg) {
                 function (input) {
                     //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
                     if (input.checked) {
-                        input.parentElement.style.backgroundColor = "#212529";
+                        input.parentElement.style.backgroundColor = "grey";
                     } else {
                         input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
                     }
@@ -146,9 +146,9 @@ function printResults() {
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
-} */
+}
 
-let data = {
+/* let data = {
     "response_code": 0,
     "results": [
         {
@@ -350,7 +350,7 @@ function printQuestions(preg) {
                 function (input) {
                     //recorro de nuevo todos los inputs, los reviso y los pinto de color oscuro si estan checked
                     if (input.checked) {
-                        input.parentElement.style.backgroundColor = "#212529";
+                        input.parentElement.style.backgroundColor = "grey";
                     } else {
                         input.parentElement.style.backgroundColor = "rgba(241, 243, 244, 0.5)";
                     }
@@ -415,17 +415,17 @@ function printResults() {
     
 
     if (correctAnswersCounter <= 5) {
-        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
+        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}.<br> \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
         pre.setAttribute("id","preRed");
     } else { //5 aciertos o más
-        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}. \n ¡Enhorabuena, te nombramos otaku honorífico!\n`;
+        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}.<br> \n ¡¡¡Enhorabuena!!!\n Te nombramos otaku honorífico!\n`;
         pre.setAttribute("id","preGreen");
     };
 
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
-}
+} */
 
 
 
