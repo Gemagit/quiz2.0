@@ -309,7 +309,6 @@ let correctAnswersCounter = 0;
 
 //Local Storage
 let dataUsers = JSON.stringify([]);
-console.log("Esto es dataUsers: " + dataUsers)
 localStorage.setItem("getDataUsers", dataUsers);
 
 
@@ -350,36 +349,25 @@ function printQuestions(preg) {
     document.querySelector("#sect1").innerHTML = questionForm;
 
     let questionObject = JSON.parse(JSON.stringify(data.results[preg]))
-    console.log(questionObject)
     //Obtener las rutas a los elementos a dibujar en el DOM
     let question = questionObject.question;
     let correctAnswer = questionObject.correct_answer; // --> La respuesta correcta sigue estando aquí
-    console.log("La respuesta correcta: " + correctAnswer)
     let incorrectAnswers = questionObject.incorrect_answers; // --> Array con tres elementos
-    console.log(incorrectAnswers)
     let allAnswers = incorrectAnswers;
     allAnswers.push(correctAnswer); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
-    console.log(allAnswers)
-    console.log(incorrectAnswers)
 
     //Pintar pregunta y respuestas en el DOM
     document.getElementById("answer0").setAttribute("value", allAnswers.shift()); //Al hacerlo sucesivamente impedimos que se repita ninguno de los elementos
     document.getElementById("answer0Label").innerHTML = document.getElementById("answer0").value; //Le dimos como valor al input el elemento extraido del array para después poder comprobar si coincide con correctAnswer o no
-    console.log(allAnswers)
     document.getElementById("answer1").setAttribute("value", allAnswers.shift());
     document.getElementById("answer1Label").innerHTML = document.getElementById("answer1").value;
-    console.log(allAnswers)
     document.getElementById("answer2").setAttribute("value", allAnswers.shift());
     document.getElementById("answer2Label").innerHTML = document.getElementById("answer2").value;
-    console.log(allAnswers)
     document.getElementById("answer3").setAttribute("value", allAnswers.shift()); //Al final el array allAnswers queda vacío
     document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value;
-    console.log(allAnswers)
-
-    console.log("Array de respuestas incorrectas: " + incorrectAnswers)
-    console.log("El array respuestas despues de todo: " + allAnswers)
+    
 
     document.getElementById("question").innerHTML = question;
 
@@ -469,45 +457,6 @@ function printResults() {
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
 
-    let dataUsers = JSON.stringify([
-        { "correctAnswersCounter": 4, "date": "13/3/2024" },
-        { "correctAnswersCounter": 6, "date": "13/3/2024" },
-        { "correctAnswersCounter": 2, "date": "13/3/2024" },
-        { "correctAnswersCounter": 10, "date": "13/3/2024" },
-        { "correctAnswersCounter": 1, "date": "13/3/2024" }
-    ]);
-    
-    console.log("Esto es dataUsers: " + dataUsers)
-    localStorage.setItem("getDataUsers", dataUsers);
-
-
-    let article = document.createElement("article");
-    document.getElementById("graph").appendChild(article);
-
-    /*let date = [];//creamos un array vacío para ir pusheando los datos obtenidos con la fecha 
-    let correctAnswersCounter = [];//creamos un array vacío para ir pusheando los datos obtenidos de las puntuaciones con las respuestas acertadas
-    let resultados = dataUsers.results;//metemos en una variable el acceso al array de objetos results
-    for (let i = 0; i < resultados.length; i++) {//iteramos sobre el array de la propiedad results
-        // console.log(resultados[i]);
-        correctAnswersCounter.push(resultados[i].correctAnswersCounter);//pusheamos a la variable correctAnswers las acertadas de las respuestas ok
-        
-    }
-    console.log(date);*/
-
-    new Chartist.Line('graph', {//pintamos la gráfica y le pasamos por parámetro la clase del div donde vamos a pintar la gráfica
-
-        labels: correctAnswersCounter, //metemos el array de respuestas acertadas
-        series: [date] //metemos el array de fechas
-    }, {
-        fullWidth: true,
-        chartPadding: {
-            right: 40,
-            bottom: 40
-        }
-    });
-}
-
-
 
     // La fecha en el momento de jugar la partida
     let month = (new Date().getMonth(+1)) + 1;
@@ -517,14 +466,57 @@ function printResults() {
 
     let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
     console.log(getLocalStorage);
-    let dateScore = {correctAnswersCounter, date};
+    let dateScore = { correctAnswersCounter, date };
     console.log(dateScore);
     getLocalStorage.push(dateScore);
     localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
 
-    localStorage.setItem("", dataUsers);
+    //localStorage.setItem("", dataUsers);
 
-    console.log(JSON.parse(localStorage.getItem("getDataUsers")));
+    //console.log(typeof JSON.parse(localStorage.getItem("getDataUsers")));
+    let dataUsers1 = JSON.parse(localStorage.getItem("getDataUsers"));
+    console.log(dataUsers1);
+    console.log(dataUsers1[0].correctAnswersCounter);
+    let scores = [];
+    let dates1=[];
+    for (let i = 0; i <dataUsers1.length; i++) {
+       scores.push(dataUsers1[i].correctAnswersCounter);
+       dates1.push(dataUsers1[i].date);
+    }
+    console.log(scores)
+    console.log(dates1)
+
+
+
+
+    let article = document.createElement("article");
+    article.setAttribute("class", "graph")
+    document.getElementById("sect1").appendChild(article);
+
+    var data = {
+        labels: dates1,
+        series: [
+          scores
+        ]
+      };
+      
+      var options = {
+        seriesBarDistance: 10
+      };
+      
+      var responsiveOptions = [
+        ['screen and (max-width: 640px)', {
+          seriesBarDistance: 5,
+          axisX: {
+            labelInterpolationFnc: function (value) {
+              return value[0];
+            }
+          }
+        }]
+      ];
+      
+      new Chartist.Bar('.graph', data, options, responsiveOptions);
+
 
     // Crear botón de reinicio de partida
     let button = document.createElement("button");
@@ -539,8 +531,32 @@ function printResults() {
     })
 
 
+    /*let dataUsers = JSON.stringify([
+        { "correctAnswersCounter": 4, "date": "13/3/2024" },
+        { "correctAnswersCounter": 6, "date": "13/3/2024" },
+        { "correctAnswersCounter": 2, "date": "13/3/2024" },
+        { "correctAnswersCounter": 10, "date": "13/3/2024" },
+        { "correctAnswersCounter": 1, "date": "13/3/2024" }
+    ]);
+    
+    console.log("Esto es dataUsers: " + dataUsers)
+    localStorage.setItem("getDataUsers", dataUsers);
 
 
+    let date = [];//creamos un array vacío para ir pusheando los datos obtenidos con la fecha 
+    let correctAnswersCounter = [];//creamos un array vacío para ir pusheando los datos obtenidos de las puntuaciones con las respuestas acertadas
+    let resultados = dataUsers.results;//metemos en una variable el acceso al array de objetos results
+    for (let i = 0; i < resultados.length; i++) {//iteramos sobre el array de la propiedad results
+        // console.log(resultados[i]);
+        correctAnswersCounter.push(resultados[i].correctAnswersCounter);//pusheamos a la variable correctAnswers las acertadas de las respuestas ok
+        
+    }
+    console.log(date);
+
+ 
+    );*/
+
+}
 
 
 
