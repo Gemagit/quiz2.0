@@ -42,7 +42,10 @@ También cabe destacar que cuando el usuario no responde y quiere pasar a la sig
 
 ![alert](https://github.com/Gemagit/quiz2.0/assets/143506667/1650e5b9-d662-40ba-a66c-20c88e325828)
 
-Cuando haya respondido hará **click** en "Siguiente pregunta" y así sucesivamente hasta completar un número de 10 preguntas con sus respectivas respuestas. Al llegar a la pregunta 10, en lugar de "Siguiente pregunta", aparecerá en el botón "Comprueba tus resultados". Este botón te mostrará tu **puntuación** en un cartelito con un mensaje y el **número de aciertos**. Como anexo a esto también se añadirá una **gráfica** con el porcentaje de aciertos con respecto a otros usuarios.
+Cuando haya respondido hará **click** en "Siguiente pregunta" y así sucesivamente hasta completar un número de 10 preguntas con sus respectivas respuestas. Al llegar a la pregunta 10, en lugar de "Siguiente pregunta", aparecerá en el botón "Comprueba tus resultados". Este botón te mostrará tu **puntuación** en un cartelito con un mensaje y el **número de aciertos**.
+
+
+Como anexo a esto también se añadirá una **gráfica** con el porcentaje de aciertos con respecto a otros usuarios.
 
 ## 4. Design
 
