@@ -51,5 +51,10 @@ Una de las grandes confusiones respecto de la cultura oriental que tienen quiene
 ![gojorotsu](https://github.com/Gemagit/quiz2.0/assets/143506667/4b7c5607-d3d1-4217-8309-6c51b31f0dfe)
 
 
+## 5. Colaboration
+
+Los creadores de este quiz somos Alberto González y Gema Millán. Dos estudiantes inquietos de Full Stack que disfrutan programando y han vivido con entusiasmo este proceso tan bonito de poder comenzar un proyecto partiendo de cero y que de como resultado algo tan dinámico y creativo.
+
+
 
 
