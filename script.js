@@ -1,4 +1,4 @@
-let counter = 0;
+/* let counter = 0;
 let correctAnswersCounter = 0;
 
 async function printQuestions(preg) {
@@ -141,9 +141,9 @@ function printResults() {
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
-}
+} */
 
-/* let data = {
+let data = {
     "response_code": 0,
     "results": [
         {
@@ -272,6 +272,11 @@ function printResults() {
 let counter = 0;
 let correctAnswersCounter = 0;
 
+let dataUsers = JSON.stringify([]);
+console.log("Esto es dataUsers: " + dataUsers)
+localStorage.setItem("getDataUsers", dataUsers);
+
+
 function printQuestions(preg) {
     function buttonText() {
         if (counter <= 8) {
@@ -386,8 +391,8 @@ function printQuestions(preg) {
             }
         })
         if (counterRespondidas != 1) {
-            alert('Debes seleccionar alguna respuesta')
-            return 
+            /* alert('Debes seleccionar alguna respuesta')
+            return */
         }
         counter++
         console.log("Contador de preguntas: " + counter)
@@ -395,7 +400,7 @@ function printQuestions(preg) {
             printQuestions(counter)
         } else {
             printResults()
-        } 
+        }
     })
 }
 printQuestions(0);
@@ -403,26 +408,37 @@ printQuestions(0);
 function printResults() {
     document.getElementById("sect1").innerHTML = "";
 
-  
-
     let pre = document.createElement("pre");
-    let p= document.createElement("p");
-    
+    let p = document.createElement("p");
+
 
     if (correctAnswersCounter <= 5) {
         p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}.<br> \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
-        pre.setAttribute("id","preRed");
+        pre.setAttribute("id", "preRed");
     } else { //5 aciertos o más
-        p.innerHTML= `\n Número de aciertos: ${correctAnswersCounter}.<br> \n ¡¡¡Enhorabuena!!!\n Te nombramos otaku honorífico!\n`;
-        pre.setAttribute("id","preGreen");
+        p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}.<br> \n ¡¡¡Enhorabuena!!!\n Te nombramos otaku honorífico!\n`;
+        pre.setAttribute("id", "preGreen");
     };
 
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
-} */
 
+    /* let dataUsers = JSON.stringify([]);
+    localStorage.setItem("getDataUsers", dataUsers); */
 
+    // La fecha en el momento de jugar la partida
+    let month = (new Date().getMonth(+1)) + 1
+    let day = Date().slice(8, 10)
+    let year = Date().slice(11, 15)
+    let date = day + "/" + month + "/" + year
+
+    let getLocalStorage = JSON.parse(localStorage.getItem("dataUsers"));
+    console.log(getLocalStorage)
+    let dateScore = {correctAnswersCounter, date}
+    console.log(dateScore)
+
+}
 
 
 /*/GRÁFICA PIE PORCENTAJE
