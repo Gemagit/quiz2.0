@@ -44,9 +44,13 @@ async function printQuestions(preg) {
 
     document.querySelector("#sect1").innerHTML = questionForm; //Pintamos la estructura del <form> en el DOM
 
-    let question = data.results[preg].question;
-    let correctAnswer = data.results[preg].correct_answer; // --> La respuesta correcta sigue estando aquí
-    let allAnswers = data.results[preg].incorrect_answers; // --> Array con tres elementos
+    let questionObject = JSON.parse(JSON.stringify(data.results[preg]))
+
+    //Obtener las rutas a los elementos a dibujar en el DOM
+    let question = questionObject.question;
+    let correctAnswer = questionObject.correct_answer; // --> La respuesta correcta sigue estando aquí
+    let incorrectAnswers = questionObject.incorrect_answers; // --> Array con tres elementos
+    let allAnswers = incorrectAnswers;
     allAnswers.push(correctAnswer); //Array de 4 elementos con las respuestas
 
     allAnswers.sort(function () { return Math.random() - 0.5 }); //Randomiza los elementos dentro del array
@@ -61,7 +65,6 @@ async function printQuestions(preg) {
     document.getElementById("answer3Label").innerHTML = document.getElementById("answer3").value;
 
     document.getElementById("question").innerHTML = question;
-
 
 
     //SELECCIONAR CON BOTON LA RESPUESTA ELEGIDA Y CAMBIARLA DE COLOR
@@ -133,7 +136,6 @@ function printResults() {
     let pre = document.createElement("pre");
     let p = document.createElement("p");
 
-
     if (correctAnswersCounter <= 5) {
         p.innerHTML = `\n Número de aciertos: ${correctAnswersCounter}. \n El mundo del animanga aún \n  tiene mucho que ofrecerte coleguita\n`;
         pre.setAttribute("id", "preRed");
@@ -144,39 +146,71 @@ function printResults() {
 
     pre.appendChild(p);
     document.getElementById("sect1").appendChild(pre); // dibuja resultado
-
 }
 
 
+// La fecha en el momento de jugar la partida
+let month = (new Date().getMonth(+1)) + 1;
+let day = Date().slice(8, 10);
+let year = Date().slice(11, 15);
+let date = day + "/" + month + "/" + year;
 
-    // La fecha en el momento de jugar la partida
-    let month = (new Date().getMonth(+1)) + 1;
-    let day = Date().slice(8, 10);
-    let year = Date().slice(11, 15);
-    let date = day + "/" + month + "/" + year;
+let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
+let dateScore = { correctAnswersCounter, date };
+getLocalStorage.push(dateScore);
+localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
 
-    let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
-    console.log(getLocalStorage);
-    let dateScore = {correctAnswersCounter, date};
-    console.log(dateScore);
-    getLocalStorage.push(dateScore);
-    localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
+let dataUsers1 = JSON.parse(localStorage.getItem("getDataUsers"));
+let scores = [];
+let dates1 = [];
+for (let i = 0; i < dataUsers1.length; i++) {
+    scores.push(dataUsers1[i].correctAnswersCounter);
+    dates1.push(dataUsers1[i].date);
+}
 
-    localStorage.setItem("", dataUsers);
 
-    console.log(JSON.parse(localStorage.getItem("getDataUsers")));
+let article = document.createElement("article");
+article.setAttribute("class", "graph")
+document.getElementById("sect1").appendChild(article);
 
-    // Crear botón de reinicio de partida
-    let button = document.createElement("button");
-    button.innerHTML = "Jugar otra vez";
-    button.setAttribute("id", "restart");
-    document.getElementById("sect1").appendChild(button);
+//Gráfica
+var data = {
+    labels: dates1,
+    series: [
+        scores
+    ]
+};
 
-    document.getElementById("restart").addEventListener("click", function (event) {
-        counter = 0;
-        printQuestions(0);
-    })
-} */
+var options = {
+    seriesBarDistance: 10,
+};
+
+var responsiveOptions = [
+    ['screen and (max-width: 640px)', {
+        seriesBarDistance: 5,
+        axisX: {
+            labelInterpolationFnc: function (value) {
+                return value[0];
+            }
+        }
+    }]
+];
+
+new Chartist.Bar('.graph', data, options, responsiveOptions);
+
+
+// Crear botón de reinicio de partida
+let button = document.createElement("button");
+button.innerHTML = "Jugar otra vez";
+button.setAttribute("id", "restart");
+document.getElementById("sect1").appendChild(button);
+
+document.getElementById("restart").addEventListener("click", function (event) {
+    counter = 0;
+    printQuestions(0);
+})
+*/
+
 
 let data = {
     "response_code": 0,
@@ -423,8 +457,8 @@ function printQuestions(preg) {
         })
         if (counterRespondidas != 1) {
 
-            /*  alert('Debes seleccionar alguna respuesta')
-             return */
+            alert('Debes seleccionar alguna respuesta')
+             return 
 
         }
         counter++
@@ -465,28 +499,18 @@ function printResults() {
     let date = day + "/" + month + "/" + year;
 
     let getLocalStorage = JSON.parse(localStorage.getItem("getDataUsers"));
-    console.log(getLocalStorage);
     let dateScore = { correctAnswersCounter, date };
-    console.log(dateScore);
     getLocalStorage.push(dateScore);
     localStorage.setItem("getDataUsers", JSON.stringify(getLocalStorage));
 
-    //localStorage.setItem("", dataUsers);
-
-    //console.log(typeof JSON.parse(localStorage.getItem("getDataUsers")));
     let dataUsers1 = JSON.parse(localStorage.getItem("getDataUsers"));
-    console.log(dataUsers1);
-    console.log(dataUsers1[0].correctAnswersCounter);
     let scores = [];
     let dates1=[];
     for (let i = 0; i <dataUsers1.length; i++) {
        scores.push(dataUsers1[i].correctAnswersCounter);
        dates1.push(dataUsers1[i].date);
     }
-    console.log(scores)
-    console.log(dates1)
-
-
+    
 
 
     let article = document.createElement("article");
@@ -501,7 +525,7 @@ function printResults() {
       };
       
       var options = {
-        seriesBarDistance: 10
+        seriesBarDistance: 10,
       };
       
       var responsiveOptions = [
@@ -529,32 +553,6 @@ function printResults() {
         correctAnswersCounter = 0;
         printQuestions(0);
     })
-
-
-    /*let dataUsers = JSON.stringify([
-        { "correctAnswersCounter": 4, "date": "13/3/2024" },
-        { "correctAnswersCounter": 6, "date": "13/3/2024" },
-        { "correctAnswersCounter": 2, "date": "13/3/2024" },
-        { "correctAnswersCounter": 10, "date": "13/3/2024" },
-        { "correctAnswersCounter": 1, "date": "13/3/2024" }
-    ]);
-    
-    console.log("Esto es dataUsers: " + dataUsers)
-    localStorage.setItem("getDataUsers", dataUsers);
-
-
-    let date = [];//creamos un array vacío para ir pusheando los datos obtenidos con la fecha 
-    let correctAnswersCounter = [];//creamos un array vacío para ir pusheando los datos obtenidos de las puntuaciones con las respuestas acertadas
-    let resultados = dataUsers.results;//metemos en una variable el acceso al array de objetos results
-    for (let i = 0; i < resultados.length; i++) {//iteramos sobre el array de la propiedad results
-        // console.log(resultados[i]);
-        correctAnswersCounter.push(resultados[i].correctAnswersCounter);//pusheamos a la variable correctAnswers las acertadas de las respuestas ok
-        
-    }
-    console.log(date);
-
- 
-    );*/
 
 }
 
