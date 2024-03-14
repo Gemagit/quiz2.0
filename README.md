@@ -1,7 +1,7 @@
 # 🇯🇵 ANIMANGA quiz2.0 🇯🇵
 
 ## Introduction
-Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que hemos aprendido lo que llevamos de curso. Se trata de un cuestionario divertido de 10 preguntas que apareceran aleatoriamente en el navegador con sus respectivas respuestas. Como broche final podrás comprobar tus resultados y compararlos, mediante una gráfica, con el resto de personas que hayan particpado para ver puntuaciones.
+Os presentamos ANIMANGA quiz2.0, un proyecto en el que demostraremos todo lo que hemos aprendido lo que llevamos de curso. Se trata de un cuestionario divertido de 10 preguntas que apareceran aleatoriamente en el navegador con sus respectivas respuestas. Como broche final podrás comprobar tus resultados y compararlos, mediante una gráfica, con el resto de personas que hayan participado para ver puntuaciones.
 
 ## Table of Contents
 1. Mobile First
