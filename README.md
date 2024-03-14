@@ -30,7 +30,6 @@ Las tecnologías usadas en este quiz son las siguientes:
 2. CSS
 3. JAVASCRIPT
 4. GRAPHICS
-5. FIREBASE AUTHENTICATION y  FIREBASE STORAGE
 
 
 ## 3. Features
